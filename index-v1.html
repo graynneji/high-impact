@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>High-Income Career Accelerator 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #F0D080;
+    --gold-dim: #8A6E2F;
+    --bg: #080808;
+    --surface: #0E0E0E;
+    --surface2: #141414;
+    --border: rgba(201,168,76,0.18);
+    --text: #F0EDE6;
+    --muted: #888;
+    --accent: #7B5EA7;
+  }
+
+  body {
+    background: #050505;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    font-family: 'DM Sans', sans-serif;
+    padding: 40px 20px;
+  }
+
+  .flyer {
+    width: 1080px;
+    max-width: 100%;
+    background: var(--bg);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  /* ── Noise texture overlay ── */
+  .flyer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.35;
+  }
+
+  /* ── Radial glow ── */
+  .flyer::after {
+    content: '';
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 900px;
+    background: radial-gradient(ellipse at center, rgba(201,168,76,0.07) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .content { position: relative; z-index: 1; }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 52px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(201,168,76,0.03);
+  }
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .logo-mark {
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--gold);
+    letter-spacing: -0.5px;
+  }
+  .logo-text {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--text);
+    text-transform: uppercase;
+  }
+  .badge-virtual {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    padding: 5px 14px;
+    border: 1px solid var(--border);
+    text-transform: uppercase;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 64px 52px 48px;
+    position: relative;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .headline {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(42px, 5.5vw, 72px);
+    font-weight: 800;
+    line-height: 1.0;
+    color: var(--text);
+    letter-spacing: -0.03em;
+    margin-bottom: 10px;
+  }
+  .headline .accent-word {
+    color: var(--gold);
+    position: relative;
+    display: inline-block;
+  }
+  .headline-year {
+    font-family: 'DM Mono', monospace;
+    font-size: clamp(42px, 5.5vw, 72px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--muted);
+  }
+
+  .tagline {
+    font-size: 15px;
+    line-height: 1.65;
+    color: rgba(240,237,230,0.62);
+    max-width: 580px;
+    margin: 28px 0 0;
+    font-style: italic;
+    font-weight: 300;
+    border-left: 2px solid var(--gold);
+    padding-left: 20px;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, var(--border) 0%, rgba(201,168,76,0.35) 40%, var(--border) 100%);
+    margin: 0 52px;
+  }
+
+  /* ── MIDDLE SECTION ── */
+  .mid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 48px 52px;
+  }
+
+  .col-left { padding-right: 48px; border-right: 1px solid var(--border); }
+  .col-right { padding-left: 48px; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .audience-list, .learn-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .audience-list li, .learn-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 14px;
+    color: rgba(240,237,230,0.8);
+    font-weight: 400;
+    line-height: 1.4;
+  }
+  .audience-list li::before {
+    content: '✔';
+    color: var(--gold);
+    font-size: 11px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  .learn-list li::before {
+    content: '→';
+    color: var(--gold);
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  /* ── VALUE STACK ── */
+  .value-section {
+    padding: 0 52px 48px;
+  }
+  .value-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 32px;
+  }
+  .value-table th {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    text-align: left;
+    padding: 0 0 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .value-table th:last-child { text-align: right; }
+  .value-table td {
+    padding: 13px 0;
+    font-size: 13.5px;
+    border-bottom: 1px solid rgba(201,168,76,0.07);
+    color: rgba(240,237,230,0.75);
+  }
+  .value-table td:last-child {
+    text-align: right;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--gold-light);
+  }
+  .value-table tr.total td {
+    border-bottom: none;
+    padding-top: 16px;
+    color: var(--text);
+    font-weight: 500;
+  }
+  .value-table tr.total td:last-child {
+    color: var(--gold-light);
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  /* ── PRICE BLOCK ── */
+  .price-block {
+    background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(123,94,167,0.05) 100%);
+    border: 1px solid var(--border);
+    padding: 32px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .price-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--gold) 0%, var(--accent) 100%);
+  }
+  .price-left .original {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: line-through;
+    margin-bottom: 6px;
+  }
+  .price-left .main-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 56px;
+    font-weight: 800;
+    color: var(--gold);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .price-left .currency {
+    font-size: 28px;
+    font-weight: 600;
+    vertical-align: super;
+  }
+  .price-left .note {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 8px;
+    letter-spacing: 0.05em;
+  }
+  .price-right {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .seats-badge {
+    display: inline-block;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid var(--border);
+    padding: 10px 20px;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .cta-btn {
+    display: block;
+    background: var(--gold);
+    color: #000;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    text-decoration: none;
+    text-align: center;
+    transition: background 0.2s;
+    cursor: pointer;
+    border: none;
+  }
+  .cta-btn:hover { background: var(--gold-light); }
+
+  /* ── FORMAT BADGE ROW ── */
+  .format-row {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    padding: 0 52px;
+    margin-bottom: 0;
+    border-top: 1px solid var(--border);
+  }
+  .format-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 0;
+    border-right: 1px solid var(--border);
+  }
+  .format-item:last-child { border-right: none; }
+  .format-item .icon {
+    font-size: 18px;
+    opacity: 0.7;
+  }
+  .format-item .label {
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .format-item .value {
+    font-size: 12px;
+    color: var(--text);
+    font-weight: 500;
+    margin-top: 2px;
+  }
+  .format-item + .format-item { padding-left: 28px; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: rgba(201,168,76,0.04);
+    border-top: 1px solid var(--border);
+    padding: 18px 52px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer .brand {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+  }
+  .footer .url {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  .footer .urgent {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  /* ── Geometric accent lines ── */
+  .geo-lines {
+    position: absolute;
+    top: 0; right: 0;
+    width: 320px;
+    height: 320px;
+    pointer-events: none;
+    opacity: 0.25;
+    overflow: hidden;
+  }
+  .geo-lines svg { width: 100%; height: 100%; }
+
+  /* ── Animation ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero, .mid, .value-section, .format-row, .footer {
+    animation: fadeUp 0.7s ease both;
+  }
+  .hero { animation-delay: 0.05s; }
+  .mid { animation-delay: 0.15s; }
+  .value-section { animation-delay: 0.25s; }
+  .format-row { animation-delay: 0.32s; }
+  .footer { animation-delay: 0.38s; }
+</style>
+</head>
+<body>
+<div class="flyer">
+  <div class="content">
+
+    <!-- Geometric accent -->
+    <div class="geo-lines">
+      <svg viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="280" cy="40" r="180" stroke="#C9A84C" stroke-width="0.5"/>
+        <circle cx="280" cy="40" r="130" stroke="#C9A84C" stroke-width="0.5"/>
+        <circle cx="280" cy="40" r="80" stroke="#C9A84C" stroke-width="0.5"/>
+        <line x1="100" y1="0" x2="320" y2="220" stroke="#C9A84C" stroke-width="0.4"/>
+        <line x1="180" y1="0" x2="320" y2="140" stroke="#C9A84C" stroke-width="0.4"/>
+      </svg>
+    </div>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+      <div class="logo-area">
+        <div class="logo-mark">M</div>
+        <div class="logo-text">Mentel Ltd.</div>
+      </div>
+      <div class="badge-virtual">Virtual · Live · Transformational</div>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="eyebrow">3-Day Virtual Summit · 2026</div>
+      <div class="headline">
+        The <span class="accent-word">High-Income</span><br>
+        Career Accelerator
+      </div>
+      <div class="headline-year">2026</div>
+      <p class="tagline">
+        "How To Increase Your Income, Position Yourself For Global Opportunities &amp; Become Highly Valuable — Even In This Economy"
+      </p>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Mid: Who + What -->
+    <div class="mid">
+      <div class="col-left">
+        <div class="section-label">Who This Is For</div>
+        <ul class="audience-list">
+          <li>Professionals earning under ₦300k/month</li>
+          <li>Graduates who need a clear direction</li>
+          <li>Mid-level workers seeking global leverage</li>
+          <li>Founders scaling income to the next level</li>
+        </ul>
+      </div>
+      <div class="col-right">
+        <div class="section-label">What You'll Learn</div>
+        <ul class="learn-list">
+          <li>Income Positioning Formula</li>
+          <li>Acquire High-Value Skills Fast</li>
+          <li>LinkedIn &amp; Global Opportunity Access</li>
+          <li>Digital Income Blueprint</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Value Stack + Price -->
+    <div class="value-section" style="padding-top:40px;">
+      <table class="value-table">
+        <thead>
+          <tr>
+            <th>What's Included</th>
+            <th>Individual Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>6-Week Strategy Framework</td><td>₦80,000</td></tr>
+          <tr><td>Templates &amp; Playbooks</td><td>₦50,000</td></tr>
+          <tr><td>Live Mentorship Access</td><td>₦40,000</td></tr>
+          <tr><td>Private Career Network</td><td>₦30,000</td></tr>
+          <tr class="total"><td>Total Program Value</td><td>₦200,000</td></tr>
+        </tbody>
+      </table>
+
+      <div class="price-block">
+        <div class="price-left">
+          <div class="original">₦200,000</div>
+          <div class="main-price"><span class="currency">₦</span>12,000</div>
+          <div class="note">Founders Launch Access · First 2,000 Seats Only</div>
+        </div>
+        <div class="price-right">
+          <div class="seats-badge">⚡ Early Access Closes Soon</div>
+          <button class="cta-btn">Secure Your Seat Now →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Format Row -->
+    <div class="format-row">
+      <div class="format-item">
+        <span class="icon">🖥</span>
+        <div>
+          <div class="label">Format</div>
+          <div class="value">Virtual Summit</div>
+        </div>
+      </div>
+      <div class="format-item">
+        <span class="icon">📅</span>
+        <div>
+          <div class="label">Duration</div>
+          <div class="value">3 Days · Live</div>
+        </div>
+      </div>
+      <div class="format-item">
+        <span class="icon">🎯</span>
+        <div>
+          <div class="label">Seats</div>
+          <div class="value">First 2,000 Only</div>
+        </div>
+      </div>
+      <div class="format-item">
+        <span class="icon">💰</span>
+        <div>
+          <div class="label">Early Access</div>
+          <div class="value">₦12,000</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="brand">Mentel Ltd. · Q1 2026</div>
+      <div class="urgent">🔥 Limited Seats · Register Before Doors Close</div>
+      <div class="url">mentelltd.com</div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>

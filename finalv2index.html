@@ -20,11 +20,13 @@
         --muted: rgba(240, 237, 228, 0.42);
         --border: rgba(255, 200, 0, 0.14);
       }
+
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
+
       html,
       body {
         background: var(--bg);
@@ -34,6 +36,8 @@
         line-height: 1.6;
         overflow-x: hidden;
       }
+
+      /* ─── PAGE SYSTEM ─── */
       .page {
         display: none;
         min-height: 100vh;
@@ -41,6 +45,8 @@
       .page.active {
         display: block;
       }
+
+      /* ─── SHARED COMPONENTS ─── */
       .grid-bg {
         position: fixed;
         inset: 0;
@@ -79,6 +85,7 @@
         pointer-events: none;
         z-index: 0;
       }
+
       .top-bar {
         position: fixed;
         top: 0;
@@ -93,6 +100,7 @@
           transparent 100%
         );
       }
+
       .wrap {
         max-width: 860px;
         margin: 0 auto;
@@ -107,6 +115,7 @@
         position: relative;
         z-index: 2;
       }
+
       .eyebrow {
         display: inline-flex;
         align-items: center;
@@ -124,6 +133,7 @@
         background: var(--gold);
         flex-shrink: 0;
       }
+
       .section-label {
         font-size: 10px;
         font-weight: 700;
@@ -132,15 +142,21 @@
         color: rgba(255, 200, 0, 0.5);
         margin-bottom: 14px;
       }
+
       h1,
       h2,
       h3 {
         font-family: "Bebas Neue", sans-serif;
         letter-spacing: 0.03em;
       }
+
       .gold {
         color: var(--gold);
       }
+      .muted {
+        color: var(--muted);
+      }
+
       .divider {
         width: 100%;
         height: 1px;
@@ -152,6 +168,8 @@
         );
         margin: 60px 0;
       }
+
+      /* CTA BUTTON */
       .btn-primary {
         display: inline-block;
         background: var(--gold);
@@ -174,6 +192,7 @@
         transform: translateY(-2px);
         box-shadow: 0 8px 50px rgba(255, 200, 0, 0.4);
       }
+
       .btn-ghost {
         display: inline-block;
         background: transparent;
@@ -195,6 +214,8 @@
         background: rgba(255, 200, 0, 0.06);
         border-color: rgba(255, 200, 0, 0.4);
       }
+
+      /* TAG */
       .tag {
         display: inline-block;
         font-size: 10.5px;
@@ -211,11 +232,15 @@
         border-color: rgba(255, 200, 0, 0.35);
         background: rgba(255, 200, 0, 0.06);
       }
+
+      /* STAR */
       .stars {
         color: var(--gold);
         letter-spacing: 3px;
         font-size: 13px;
       }
+
+      /* NAV */
       nav {
         position: relative;
         z-index: 10;
@@ -241,22 +266,59 @@
         font-weight: 700;
         letter-spacing: 0.15em;
         text-transform: uppercase;
-        color: rgba(240, 237, 228, 0.42);
+        color: var(--muted);
       }
-      footer {
-        border-top: 1px solid var(--border);
-        padding: 28px 0;
+
+      /* COUNTDOWN TIMER (reusable) */
+      .countdown-bar {
+        background: rgba(255, 200, 0, 0.06);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 14px 28px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+      .countdown-bar .cb-label {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(255, 200, 0, 0.6);
+        flex-shrink: 0;
+      }
+      .timer-group {
+        display: flex;
+        gap: 8px;
+      }
+      .timer-unit {
         text-align: center;
-        font-size: 11px;
+      }
+      .timer-num {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 32px;
+        color: var(--gold);
+        line-height: 1;
+        display: block;
+      }
+      .timer-lbl {
+        font-size: 8px;
         font-weight: 700;
         letter-spacing: 0.18em;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.12);
-        position: relative;
-        z-index: 2;
+        color: var(--muted);
+      }
+      .timer-sep {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 28px;
+        color: rgba(255, 200, 0, 0.3);
+        line-height: 1.1;
       }
 
-      /* PAGE 1 */
+      /* ════════════════════════════════════════════
+       PAGE 1 — LANDING / SALES PAGE
+    ════════════════════════════════════════════ */
       #page-landing {
         animation: fadeIn 0.5s ease;
       }
@@ -270,9 +332,14 @@
           transform: translateY(0);
         }
       }
+
+      /* HERO */
       .hero {
         padding: 80px 0 60px;
         text-align: center;
+      }
+      .hero-eyebrow {
+        margin-bottom: 24px;
       }
       .hero h1 {
         font-size: clamp(72px, 12vw, 140px);
@@ -283,7 +350,7 @@
         font-size: 19px;
         font-weight: 300;
         font-style: italic;
-        color: rgba(240, 237, 228, 0.42);
+        color: var(--muted);
         max-width: 620px;
         margin: 0 auto 36px;
         line-height: 1.65;
@@ -295,6 +362,16 @@
         flex-wrap: wrap;
         margin-bottom: 48px;
       }
+      .hero-cta {
+        margin-bottom: 18px;
+      }
+      .hero-note {
+        font-size: 12px;
+        color: var(--muted);
+        letter-spacing: 0.04em;
+      }
+
+      /* PRICE BAND */
       .price-band {
         background: var(--bg2);
         border-top: 1px solid var(--border);
@@ -316,6 +393,10 @@
         text-decoration: line-through;
         font-weight: 300;
       }
+      .price-arrow {
+        font-size: 20px;
+        color: var(--muted);
+      }
       .price-main {
         font-family: "Bebas Neue", sans-serif;
         font-size: 96px;
@@ -327,7 +408,7 @@
         font-weight: 700;
         letter-spacing: 0.18em;
         text-transform: uppercase;
-        color: rgba(240, 237, 228, 0.42);
+        color: var(--muted);
         margin-top: 4px;
       }
       .price-badge {
@@ -340,6 +421,18 @@
         letter-spacing: 0.15em;
         text-transform: uppercase;
         color: var(--gold);
+      }
+
+      /* PROBLEM SECTION */
+      .problem {
+        padding: 80px 0;
+      }
+      .problem-intro {
+        font-size: 32px;
+        font-family: "Bebas Neue", sans-serif;
+        line-height: 1.2;
+        max-width: 680px;
+        margin-bottom: 48px;
       }
       .truth-grid {
         display: grid;
@@ -359,132 +452,18 @@
         font-family: "Bebas Neue", sans-serif;
         font-size: 22px;
         margin-bottom: 8px;
+        color: var(--text);
       }
       .truth-item p {
         font-size: 14px;
-        color: rgba(240, 237, 228, 0.42);
+        color: var(--muted);
         line-height: 1.6;
       }
 
-      /* INSTRUCTOR */
-      .instructor-card {
-        background: var(--bg2);
-        border: 1px solid rgba(255, 200, 0, 0.22);
-        border-radius: 4px;
-        overflow: hidden;
-        display: grid;
-        grid-template-columns: 320px 1fr;
+      /* PROGRAM WEEKS */
+      .program {
+        padding: 80px 0;
       }
-      .instructor-photo-col {
-        background: rgba(255, 200, 0, 0.04);
-        border-right: 1px solid rgba(255, 200, 0, 0.14);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 48px 32px;
-        text-align: center;
-      }
-      .instructor-avatar {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        border: 2px solid rgba(255, 200, 0, 0.5);
-        background: rgba(255, 200, 0, 0.06);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 48px;
-        margin: 0 auto 20px;
-        box-shadow: 0 0 60px rgba(255, 200, 0, 0.12);
-        overflow: hidden;
-      }
-      .instructor-avatar img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 50%;
-      }
-      .instructor-name {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 30px;
-        letter-spacing: 0.05em;
-        color: var(--text);
-        line-height: 1;
-        margin-bottom: 6px;
-      }
-      .instructor-title-lbl {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        color: rgba(255, 200, 0, 0.6);
-        margin-bottom: 24px;
-      }
-      .instructor-stats {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        width: 100%;
-      }
-      .instructor-stat {
-        background: rgba(255, 200, 0, 0.05);
-        border: 1px solid rgba(255, 200, 0, 0.12);
-        border-radius: 3px;
-        padding: 10px 14px;
-        text-align: center;
-      }
-      .stat-num {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 24px;
-        color: var(--gold);
-        line-height: 1;
-      }
-      .stat-lbl {
-        font-size: 9px;
-        font-weight: 700;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: rgba(240, 237, 228, 0.42);
-      }
-      .instructor-bio-col {
-        padding: 48px;
-      }
-      .instructor-bio-col h3 {
-        font-size: 44px;
-        line-height: 0.92;
-        margin-bottom: 20px;
-      }
-      .instructor-bio-col h3 em {
-        color: var(--gold);
-        font-style: normal;
-      }
-      .instructor-bio-col p {
-        font-size: 15px;
-        color: rgba(240, 237, 228, 0.42);
-        line-height: 1.75;
-        margin-bottom: 16px;
-      }
-      .cred-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 12px;
-        font-size: 14px;
-        color: rgba(255, 255, 255, 0.75);
-        padding: 12px 0;
-        border-bottom: 1px solid rgba(255, 200, 0, 0.07);
-      }
-      .cred-item:last-child {
-        border-bottom: none;
-      }
-      .cred-icon {
-        color: var(--gold);
-        font-size: 15px;
-        flex-shrink: 0;
-        margin-top: 2px;
-      }
-
-      /* WEEKS */
       .weeks {
         display: flex;
         flex-direction: column;
@@ -494,6 +473,7 @@
       .week {
         display: flex;
         align-items: stretch;
+        gap: 0;
         border: 1px solid var(--border);
         overflow: hidden;
         transition: border-color 0.2s;
@@ -503,7 +483,7 @@
       }
       .week-num {
         background: var(--bg2);
-        padding: 28px;
+        padding: 28px 28px;
         font-family: "Bebas Neue", sans-serif;
         font-size: 48px;
         color: rgba(255, 200, 0, 0.18);
@@ -530,10 +510,13 @@
       }
       .week-body p {
         font-size: 14px;
-        color: rgba(240, 237, 228, 0.42);
+        color: var(--muted);
       }
 
       /* BONUSES */
+      .bonuses {
+        padding: 80px 0;
+      }
       .bonus-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -556,10 +539,13 @@
       }
       .bonus-card p {
         font-size: 13px;
-        color: rgba(240, 237, 228, 0.42);
+        color: var(--muted);
       }
 
-      /* BEFORE AFTER */
+      /* TRANSFORMATION */
+      .transform {
+        padding: 80px 0;
+      }
       .before-after {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -581,14 +567,14 @@
         letter-spacing: 0.22em;
         text-transform: uppercase;
         margin-bottom: 20px;
-        color: rgba(240, 237, 228, 0.42);
+        color: var(--muted);
       }
       .ba-col.after .ba-label {
         color: var(--gold);
       }
       .ba-item {
         font-size: 16px;
-        color: rgba(255, 255, 255, 0.45);
+        color: rgba(255, 255, 255, 0.55);
         padding: 10px 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       }
@@ -608,9 +594,12 @@
       }
 
       /* TESTIMONIALS */
+      .testimonials {
+        padding: 80px 0;
+      }
       .testi-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
         gap: 2px;
         margin-top: 40px;
       }
@@ -639,18 +628,11 @@
         color: var(--gold);
         font-style: normal;
       }
-      .testi-result {
-        margin-top: 14px;
-        padding-top: 14px;
-        border-top: 1px solid rgba(255, 200, 0, 0.1);
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: rgba(255, 200, 0, 0.7);
-      }
 
       /* VALUE STACK */
+      .value-stack {
+        padding: 80px 0;
+      }
       .vs-table {
         margin-top: 40px;
         border: 1px solid var(--border);
@@ -669,6 +651,7 @@
       }
       .vs-row.total {
         background: rgba(255, 200, 0, 0.05);
+        border-bottom: none;
         border-top: 2px solid rgba(255, 200, 0, 0.3);
       }
       .vs-item {
@@ -678,7 +661,7 @@
       .vs-price {
         font-family: "Bebas Neue", sans-serif;
         font-size: 24px;
-        color: rgba(240, 237, 228, 0.42);
+        color: var(--muted);
       }
       .vs-row.total .vs-item {
         font-family: "Bebas Neue", sans-serif;
@@ -689,63 +672,10 @@
         font-size: 36px;
       }
 
-      /* INLINE URGENCY */
-      .inline-urgency {
-        background: rgba(255, 200, 0, 0.05);
-        border: 1px solid rgba(255, 200, 0, 0.2);
-        border-radius: 4px;
-        padding: 28px 36px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 24px;
-        flex-wrap: wrap;
-        margin: 60px 0;
-      }
-      .iu-label {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: rgba(255, 200, 0, 0.6);
-        margin-bottom: 6px;
-      }
-      .iu-text {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 26px;
-        line-height: 1.1;
-        color: var(--text);
-      }
-      .iu-timer {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-      }
-      .iu-unit {
-        text-align: center;
-      }
-      .iu-num {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 40px;
-        color: var(--gold);
-        line-height: 1;
-        display: block;
-      }
-      .iu-lbl {
-        font-size: 8px;
-        font-weight: 700;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: rgba(240, 237, 228, 0.42);
-      }
-      .iu-sep {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 32px;
-        color: rgba(255, 200, 0, 0.3);
-        line-height: 1;
-      }
-
       /* GUARANTEE */
+      .guarantee {
+        padding: 80px 0;
+      }
       .guarantee-box {
         background: var(--bg2);
         border: 1px solid rgba(255, 200, 0, 0.2);
@@ -765,69 +695,15 @@
       }
       .guarantee-box p {
         font-size: 15px;
-        color: rgba(240, 237, 228, 0.42);
+        color: var(--muted);
         line-height: 1.7;
         max-width: 540px;
       }
 
-      /* FAQ */
-      .faq-list {
-        margin-top: 40px;
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
+      /* WHO IS THIS FOR */
+      .for-section {
+        padding: 80px 0;
       }
-      .faq-item {
-        background: var(--bg2);
-        border: 1px solid var(--border);
-        overflow: hidden;
-        transition: border-color 0.2s;
-      }
-      .faq-item.open {
-        border-color: rgba(255, 200, 0, 0.3);
-      }
-      .faq-q {
-        padding: 22px 28px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 20px;
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--text);
-        user-select: none;
-      }
-      .faq-q:hover {
-        color: var(--gold);
-      }
-      .faq-icon {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 24px;
-        color: var(--gold);
-        flex-shrink: 0;
-        transition: transform 0.2s;
-      }
-      .faq-item.open .faq-icon {
-        transform: rotate(45deg);
-      }
-      .faq-a {
-        max-height: 0;
-        overflow: hidden;
-        transition:
-          max-height 0.35s ease,
-          padding 0.2s;
-        padding: 0 28px;
-        font-size: 14px;
-        color: rgba(240, 237, 228, 0.42);
-        line-height: 1.75;
-      }
-      .faq-item.open .faq-a {
-        max-height: 300px;
-        padding: 0 28px 24px;
-      }
-
-      /* FOR SECTION */
       .for-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -848,7 +724,7 @@
         margin-bottom: 20px;
       }
       .for-col.no h4 {
-        color: rgba(255, 255, 255, 0.25);
+        color: rgba(255, 255, 255, 0.3);
       }
       .for-col.yes h4 {
         color: var(--gold);
@@ -857,7 +733,7 @@
         font-size: 15px;
         padding: 10px 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        color: rgba(255, 255, 255, 0.55);
+        color: rgba(255, 255, 255, 0.6);
       }
       .for-item:last-child {
         border-bottom: none;
@@ -873,6 +749,8 @@
         content: "✓ ";
         color: var(--gold);
       }
+
+      /* FINAL CTA SECTION */
       .final-cta {
         padding: 100px 0;
         text-align: center;
@@ -885,12 +763,28 @@
       .final-cta p {
         font-size: 18px;
         font-style: italic;
-        color: rgba(240, 237, 228, 0.42);
+        color: var(--muted);
         max-width: 560px;
         margin: 0 auto 48px;
       }
 
-      /* PAGE 2 COUNTDOWN */
+      /* FOOTER */
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 28px 0;
+        text-align: center;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.12);
+        position: relative;
+        z-index: 2;
+      }
+
+      /* ════════════════════════════════════════════
+       PAGE 2 — COUNTDOWN
+    ════════════════════════════════════════════ */
       #page-countdown {
         animation: fadeIn 0.5s ease;
       }
@@ -907,10 +801,11 @@
         font-size: 18px;
         font-style: italic;
         font-weight: 300;
-        color: rgba(240, 237, 228, 0.42);
+        color: var(--muted);
         max-width: 560px;
         margin: 0 auto 56px;
       }
+
       .big-timer {
         display: flex;
         justify-content: center;
@@ -935,7 +830,7 @@
         font-weight: 700;
         letter-spacing: 0.22em;
         text-transform: uppercase;
-        color: rgba(240, 237, 228, 0.42);
+        color: var(--muted);
         margin-top: 10px;
       }
       .big-sep {
@@ -945,6 +840,7 @@
         line-height: 0.9;
         margin-top: -10px;
       }
+
       .seats-bar {
         max-width: 500px;
         margin: 0 auto 56px;
@@ -956,7 +852,7 @@
         font-weight: 700;
         letter-spacing: 0.15em;
         text-transform: uppercase;
-        color: rgba(240, 237, 228, 0.42);
+        color: var(--muted);
         margin-bottom: 10px;
       }
       .seats-bar-track {
@@ -980,6 +876,7 @@
           opacity: 1;
         }
       }
+
       .urgency-points {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -990,6 +887,7 @@
         background: var(--bg2);
         border: 1px solid var(--border);
         padding: 32px 28px;
+        text-align: left;
       }
       .urgency-card .uc-num {
         font-family: "Bebas Neue", sans-serif;
@@ -1009,10 +907,12 @@
       }
       .urgency-card p {
         font-size: 13px;
-        color: rgba(240, 237, 228, 0.42);
+        color: var(--muted);
       }
 
-      /* PAGE 3 CHECKOUT */
+      /* ════════════════════════════════════════════
+       PAGE 3 — CHECKOUT
+    ════════════════════════════════════════════ */
       #page-checkout {
         animation: fadeIn 0.5s ease;
       }
@@ -1023,6 +923,8 @@
         padding: 80px 0 100px;
         align-items: start;
       }
+
+      /* ORDER SUMMARY */
       .order-summary h2 {
         font-size: 52px;
         margin-bottom: 8px;
@@ -1031,7 +933,10 @@
         font-size: 16px;
         font-weight: 300;
         font-style: italic;
-        color: rgba(240, 237, 228, 0.42);
+        color: var(--muted);
+        margin-bottom: 40px;
+      }
+      .order-include {
         margin-bottom: 40px;
       }
       .order-include h4 {
@@ -1039,7 +944,7 @@
         font-weight: 700;
         letter-spacing: 0.2em;
         text-transform: uppercase;
-        color: rgba(240, 237, 228, 0.42);
+        color: var(--muted);
         margin-bottom: 18px;
       }
       .oi-item {
@@ -1061,12 +966,12 @@
         font-size: 15px;
         color: var(--text);
       }
+
       .order-price-box {
         background: var(--bg2);
         border: 1px solid var(--border);
         padding: 32px;
         border-radius: 3px;
-        margin-top: 32px;
       }
       .opb-row {
         display: flex;
@@ -1081,6 +986,8 @@
       }
       .opb-row.total {
         padding-top: 20px;
+        margin-top: 6px;
+        border-bottom: none;
       }
       .opb-row.total .opb-label {
         font-family: "Bebas Neue", sans-serif;
@@ -1092,7 +999,7 @@
         color: var(--gold);
       }
       .opb-label {
-        color: rgba(240, 237, 228, 0.42);
+        color: var(--muted);
       }
       .opb-val {
         color: var(--text);
@@ -1102,6 +1009,8 @@
         text-decoration: line-through;
         color: rgba(255, 255, 255, 0.18);
       }
+
+      /* CHECKOUT FORM */
       .checkout-form-wrap {
         background: var(--bg2);
         border: 1px solid var(--border);
@@ -1116,7 +1025,7 @@
       }
       .checkout-form-wrap .cf-sub {
         font-size: 12px;
-        color: rgba(240, 237, 228, 0.42);
+        color: var(--muted);
         margin-bottom: 32px;
         font-weight: 700;
         letter-spacing: 0.1em;
@@ -1131,7 +1040,7 @@
         font-weight: 700;
         letter-spacing: 0.18em;
         text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.38);
+        color: rgba(255, 255, 255, 0.4);
         margin-bottom: 8px;
       }
       .form-group input,
@@ -1154,6 +1063,19 @@
       .form-group select option {
         background: #0f0e09;
       }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .secure-badges {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 16px;
+        flex-wrap: wrap;
+      }
       .sb-item {
         font-size: 9.5px;
         font-weight: 700;
@@ -1168,6 +1090,7 @@
         content: "🔒";
         font-size: 11px;
       }
+
       .paystack-btn {
         width: 100%;
         background: var(--gold);
@@ -1192,7 +1115,9 @@
         box-shadow: 0 8px 50px rgba(255, 200, 0, 0.4);
       }
 
-      /* PAGE 4 THANK YOU */
+      /* ════════════════════════════════════════════
+       PAGE 4 — THANK YOU
+    ════════════════════════════════════════════ */
       #page-thankyou {
         animation: fadeIn 0.6s ease;
       }
@@ -1234,10 +1159,11 @@
         font-size: 18px;
         font-style: italic;
         font-weight: 300;
-        color: rgba(240, 237, 228, 0.42);
+        color: var(--muted);
         max-width: 520px;
         margin: 0 auto 56px;
       }
+
       .ty-steps {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -1248,6 +1174,7 @@
         background: var(--bg2);
         border: 1px solid var(--border);
         padding: 36px 28px;
+        text-align: left;
       }
       .ty-step .step-num {
         font-family: "Bebas Neue", sans-serif;
@@ -1267,8 +1194,23 @@
       }
       .ty-step p {
         font-size: 13px;
-        color: rgba(240, 237, 228, 0.42);
+        color: var(--muted);
         line-height: 1.65;
+      }
+
+      .ty-share {
+        padding: 80px 0;
+        text-align: center;
+      }
+      .ty-share h3 {
+        font-size: 42px;
+        margin-bottom: 16px;
+      }
+      .ty-share p {
+        font-size: 15px;
+        color: var(--muted);
+        max-width: 480px;
+        margin: 0 auto 32px;
       }
       .share-btns {
         display: flex;
@@ -1277,24 +1219,11 @@
         flex-wrap: wrap;
       }
 
-      /* RESPONSIVE */
-      @media (max-width: 860px) {
-        .testi-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-        .instructor-card {
-          grid-template-columns: 1fr;
-        }
-        .instructor-photo-col {
-          border-right: none;
-          border-bottom: 1px solid rgba(255, 200, 0, 0.14);
-        }
-      }
+      /* ─── RESPONSIVE ─── */
       @media (max-width: 720px) {
         .truth-grid,
         .before-after,
-        .for-grid,
-        .testi-grid {
+        .for-grid {
           grid-template-columns: 1fr;
         }
         .checkout-layout {
@@ -1311,20 +1240,19 @@
         .big-sep {
           display: none;
         }
-        .inline-urgency {
-          flex-direction: column;
-          text-align: center;
-        }
       }
     </style>
   </head>
   <body>
+    <!-- SHARED BACKGROUNDS -->
     <div class="grid-bg"></div>
     <div class="glow-tr"></div>
     <div class="glow-bl"></div>
     <div class="top-bar"></div>
 
-    <!-- ══════════════ PAGE 1 — LANDING ══════════════ -->
+    <!-- ════════════════════════════════════════════
+       PAGE 1 — LANDING / SALES PAGE
+  ════════════════════════════════════════════ -->
     <div class="page active" id="page-landing">
       <nav>
         <div class="wrap-wide nav-inner">
@@ -1333,6 +1261,7 @@
         </div>
       </nav>
 
+      <!-- URGENCY STRIP -->
       <div
         style="
           background: rgba(255, 200, 0, 0.07);
@@ -1351,21 +1280,24 @@
             text-transform: uppercase;
             color: var(--gold);
           "
-          >⚡ Early Access — First 2,000 Seats Only · Price Increases After
-          Cohort Fills</span
         >
+          ⚡ Early Access — First 2,000 Seats Only · Price Increases After
+          Cohort Fills
+        </span>
       </div>
 
       <!-- HERO -->
       <section class="hero">
         <div class="wrap">
-          <div style="margin-bottom: 24px">
+          <div class="hero-eyebrow">
             <span class="eyebrow"
               >Mentel Ltd · 3-Day Virtual Summit · 2026</span
             >
           </div>
           <h1>
-            HIGH-INCOME<br /><span class="gold">CAREER</span><br />ACCELERATOR
+            HIGH-INCOME<br />
+            <span class="gold">CAREER</span><br />
+            ACCELERATOR
           </h1>
           <p class="hero-sub">
             "How To Increase Your Income, Position Yourself For Global
@@ -1377,22 +1309,12 @@
             <span class="tag">Live · Virtual · 2026</span>
             <span class="tag">6-Week Framework</span>
           </div>
-          <div style="margin-bottom: 18px">
-            <button
-              class="btn-primary"
-              onclick="goTo('countdown')"
-              style="font-size: 15px; padding: 20px 52px"
-            >
+          <div class="hero-cta">
+            <button class="btn-primary" onclick="goTo('countdown')">
               ⚡ &nbsp;Secure My Seat Now
             </button>
           </div>
-          <div
-            style="
-              font-size: 12px;
-              color: rgba(240, 237, 228, 0.42);
-              letter-spacing: 0.04em;
-            "
-          >
+          <div class="hero-note">
             Instant confirmation &nbsp;·&nbsp; Limited early access seats
             &nbsp;·&nbsp; Zero risk guarantee
           </div>
@@ -1409,7 +1331,7 @@
                 font-weight: 700;
                 letter-spacing: 0.2em;
                 text-transform: uppercase;
-                color: rgba(240, 237, 228, 0.42);
+                color: var(--muted);
                 margin-bottom: 8px;
               "
             >
@@ -1417,7 +1339,7 @@
             </div>
             <div class="price-cross">₦200,000</div>
           </div>
-          <div style="font-size: 20px; color: rgba(240, 237, 228, 0.42)">→</div>
+          <div class="price-arrow">→</div>
           <div>
             <div class="price-main">₦12,000</div>
             <div class="price-main-sub">
@@ -1429,27 +1351,17 @@
       </div>
 
       <!-- PROBLEM -->
-      <section style="padding: 80px 0">
+      <section class="problem">
         <div class="wrap">
           <div class="section-label">The Hard Truth Nobody Tells You</div>
-          <div
-            style="
-              font-size: 32px;
-              font-family: &quot;Bebas Neue&quot;, sans-serif;
-              line-height: 1.2;
-              max-width: 680px;
-              margin-bottom: 48px;
-            "
-          >
-            You're not underpaid because<br />you lack skills.<br /><span
-              class="gold"
-              >You're underpaid because of positioning.</span
-            >
+          <div class="problem-intro">
+            You're not underpaid because<br />you lack skills.<br />
+            <span class="gold">You're underpaid because of positioning.</span>
           </div>
           <p
             style="
               font-size: 16px;
-              color: rgba(240, 237, 228, 0.42);
+              color: var(--muted);
               max-width: 600px;
               margin-bottom: 48px;
               font-style: italic;
@@ -1465,8 +1377,8 @@
               <h4>Your LinkedIn Repels Recruiters</h4>
               <p>
                 Your profile doesn't speak the language international hiring
-                managers scan for. You're invisible to the people who could
-                change your income.
+                managers are scanning for. You're invisible to the people who
+                could change your income.
               </p>
             </div>
             <div class="truth-item">
@@ -1474,7 +1386,8 @@
               <h4>Your CV Isn't Built For Global Standards</h4>
               <p>
                 What works locally won't open doors globally. Without the right
-                format, your experience gets skipped — even when it's excellent.
+                format and framing, your experience gets skipped — even when
+                it's excellent.
               </p>
             </div>
             <div class="truth-item">
@@ -1499,101 +1412,8 @@
 
       <div class="divider" style="position: relative; z-index: 2"></div>
 
-      <!-- INSTRUCTOR BIO -->
-      <section style="padding: 80px 0">
-        <div class="wrap">
-          <div class="section-label">Who's Teaching This</div>
-          <h2
-            style="
-              font-size: clamp(42px, 7vw, 80px);
-              line-height: 0.9;
-              margin-bottom: 36px;
-            "
-          >
-            People Buy From<br /><span class="gold">People They Trust.</span>
-          </h2>
-          <div class="instructor-card">
-            <div class="instructor-photo-col">
-              <div class="instructor-avatar">
-                <!-- Replace with: <img src="your-photo.jpg" alt="Instructor" /> -->
-                👤
-              </div>
-              <div class="instructor-name">Speaker Name</div>
-              <div class="instructor-title-lbl">Founder · Mentel Ltd</div>
-              <div class="instructor-stats">
-                <div class="instructor-stat">
-                  <div class="stat-num">500+</div>
-                  <div class="stat-lbl">Professionals Mentored</div>
-                </div>
-                <div class="instructor-stat">
-                  <div class="stat-num">$2M+</div>
-                  <div class="stat-lbl">Salary Increases Unlocked</div>
-                </div>
-                <div class="instructor-stat">
-                  <div class="stat-num">8 Yrs</div>
-                  <div class="stat-lbl">Career Strategy Experience</div>
-                </div>
-              </div>
-            </div>
-            <div class="instructor-bio-col">
-              <h3>Built By Someone Who<br />Has <em>Done The Work.</em></h3>
-              <p>
-                Mentel Ltd was founded after watching a pattern repeat itself
-                too many times: talented Nigerian professionals — hardworking,
-                skilled, and capable — staying stuck not because they weren't
-                good enough, but because they were invisible to the people who
-                could pay them what they deserved.
-              </p>
-              <p>
-                After years helping professionals navigate global hiring
-                landscapes, negotiating offers with international companies, and
-                building systems that actually work in today's remote-first
-                economy, this accelerator was built to package everything that
-                works into one focused program.
-              </p>
-              <p style="color: var(--text); font-weight: 600">
-                This is not theory. Every framework inside was tested on real
-                professionals with real results.
-              </p>
-              <div style="margin-top: 24px">
-                <div class="cred-item">
-                  <div class="cred-icon">✓</div>
-                  <div>
-                    Helped 500+ Nigerian professionals land remote and
-                    international roles
-                  </div>
-                </div>
-                <div class="cred-item">
-                  <div class="cred-icon">✓</div>
-                  <div>
-                    Specialises in global career positioning, LinkedIn strategy
-                    &amp; salary negotiation
-                  </div>
-                </div>
-                <div class="cred-item">
-                  <div class="cred-icon">✓</div>
-                  <div>
-                    Built Mentel Ltd from a personal mission to level the
-                    playing field for African talent
-                  </div>
-                </div>
-                <div class="cred-item">
-                  <div class="cred-icon">✓</div>
-                  <div>
-                    Has coached professionals across Product Design, Data,
-                    Finance, HR, and Project Management
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="divider" style="position: relative; z-index: 2"></div>
-
       <!-- PROGRAM WEEKS -->
-      <section style="padding: 80px 0">
+      <section class="program">
         <div class="wrap">
           <div class="section-label">The 6-Week Framework</div>
           <h2
@@ -1609,7 +1429,7 @@
           <p
             style="
               font-size: 16px;
-              color: rgba(240, 237, 228, 0.42);
+              color: var(--muted);
               max-width: 540px;
               margin-bottom: 8px;
             "
@@ -1646,7 +1466,8 @@
                 <h4>CV &amp; Portfolio <em>Upgrade</em></h4>
                 <p>
                   Plug-and-play templates that meet international standards.
-                  Tailored for remote, diaspora, and in-country global roles.
+                  Tailored for different global markets — remote, diaspora, and
+                  in-country roles.
                 </p>
               </div>
             </div>
@@ -1690,7 +1511,7 @@
       <div class="divider" style="position: relative; z-index: 2"></div>
 
       <!-- BONUSES -->
-      <section style="padding: 80px 0">
+      <section class="bonuses">
         <div class="wrap">
           <div class="section-label">Everything Included</div>
           <h2
@@ -1749,8 +1570,8 @@
 
       <div class="divider" style="position: relative; z-index: 2"></div>
 
-      <!-- BEFORE / AFTER -->
-      <section style="padding: 80px 0">
+      <!-- TRANSFORMATION -->
+      <section class="transform">
         <div class="wrap">
           <div class="section-label">The Shift</div>
           <h2
@@ -1786,7 +1607,7 @@
       </section>
 
       <!-- TESTIMONIALS -->
-      <section style="padding: 80px 0">
+      <section class="testimonials">
         <div class="wrap">
           <div class="section-label">Real Transformations</div>
           <h2
@@ -1807,7 +1628,6 @@
                 positioning system."
               </blockquote>
               <cite>— Daniel A., Product Designer</cite>
-              <div class="testi-result">₦180k → $2,500/month</div>
             </div>
             <div class="testi-card">
               <span class="stars">★★★★★</span>
@@ -1817,47 +1637,15 @@
                 was night and day."
               </blockquote>
               <cite>— Chioma O., Data Analyst</cite>
-              <div class="testi-result">0 interviews → 3 in 2 weeks</div>
             </div>
             <div class="testi-card">
               <span class="stars">★★★★★</span>
               <blockquote>
                 "Went from applying blindly to applying strategically. My
-                response rate jumped immediately and I'm in active conversations
-                with 2 companies."
+                response rate jumped immediately and I'm now in active
+                conversations with 2 companies."
               </blockquote>
               <cite>— Emeka T., Project Manager</cite>
-              <div class="testi-result">0 responses → active negotiations</div>
-            </div>
-            <div class="testi-card">
-              <span class="stars">★★★★★</span>
-              <blockquote>
-                "The LinkedIn module alone changed everything. I went from zero
-                profile views to 3 recruiter messages in one week after applying
-                the optimisation framework."
-              </blockquote>
-              <cite>— Adaeze M., UX Researcher</cite>
-              <div class="testi-result">0 → 3 recruiter messages in 1 week</div>
-            </div>
-            <div class="testi-card">
-              <span class="stars">★★★★★</span>
-              <blockquote>
-                "I used the salary negotiation script and pushed back on an
-                offer for the first time. Got an extra $300/month added. That
-                script paid for itself 300x."
-              </blockquote>
-              <cite>— Tunde B., Software Engineer</cite>
-              <div class="testi-result">+$300/month negotiated</div>
-            </div>
-            <div class="testi-card">
-              <span class="stars">★★★★★</span>
-              <blockquote>
-                "This isn't a course, it's a system. I followed every step for 6
-                weeks. By week 4 I had my first dollar-paying client. Week 6 I
-                handed in my notice."
-              </blockquote>
-              <cite>— Ngozi F., HR Consultant</cite>
-              <div class="testi-result">Resigned. Earning in dollars.</div>
             </div>
           </div>
         </div>
@@ -1879,7 +1667,7 @@
               font-weight: 700;
               letter-spacing: 0.2em;
               text-transform: uppercase;
-              color: rgba(240, 237, 228, 0.42);
+              color: var(--muted);
               margin-bottom: 20px;
             "
           >
@@ -1892,13 +1680,7 @@
           >
             ⚡ &nbsp;Secure My Seat — ₦12,000
           </button>
-          <div
-            style="
-              margin-top: 12px;
-              font-size: 12px;
-              color: rgba(240, 237, 228, 0.42);
-            "
-          >
+          <div style="margin-top: 12px; font-size: 12px; color: var(--muted)">
             Early access · First 2,000 seats only
           </div>
         </div>
@@ -1907,7 +1689,7 @@
       <div class="divider" style="position: relative; z-index: 2"></div>
 
       <!-- VALUE STACK -->
-      <section style="padding: 80px 0">
+      <section class="value-stack">
         <div class="wrap">
           <div class="section-label">The Investment</div>
           <h2
@@ -1937,14 +1719,14 @@
               <div class="vs-price">₦55,000</div>
             </div>
             <div class="vs-row total">
-              <div class="vs-item">Today's Price</div>
+              <div class="vs-item">Total Value</div>
               <div class="vs-price" style="color: var(--gold)">₦12,000</div>
             </div>
           </div>
           <p
             style="
               font-size: 13px;
-              color: rgba(240, 237, 228, 0.42);
+              color: var(--muted);
               margin-top: 18px;
               font-style: italic;
             "
@@ -1961,13 +1743,7 @@
             >
               ⚡ &nbsp;Get It At ₦12,000 Before It Goes Up
             </button>
-            <div
-              style="
-                margin-top: 12px;
-                font-size: 12px;
-                color: rgba(240, 237, 228, 0.42);
-              "
-            >
+            <div style="margin-top: 12px; font-size: 12px; color: var(--muted)">
               Price increases once this cohort fills
             </div>
           </div>
@@ -1975,7 +1751,7 @@
       </section>
 
       <!-- GUARANTEE -->
-      <section style="padding: 80px 0">
+      <section class="guarantee">
         <div class="wrap">
           <div class="guarantee-box">
             <div class="guarantee-icon">🛡️</div>
@@ -2009,7 +1785,7 @@
               font-weight: 700;
               letter-spacing: 0.2em;
               text-transform: uppercase;
-              color: rgba(240, 237, 228, 0.42);
+              color: var(--muted);
               margin-bottom: 20px;
             "
           >
@@ -2022,13 +1798,7 @@
           >
             ⚡ &nbsp;Yes — I'm Ready. Secure My Seat.
           </button>
-          <div
-            style="
-              margin-top: 12px;
-              font-size: 12px;
-              color: rgba(240, 237, 228, 0.42);
-            "
-          >
+          <div style="margin-top: 12px; font-size: 12px; color: var(--muted)">
             7-day guarantee · ₦12,000 one-time · All inclusive
           </div>
         </div>
@@ -2036,122 +1806,8 @@
 
       <div class="divider" style="position: relative; z-index: 2"></div>
 
-      <!-- FAQ -->
-      <section style="padding: 80px 0">
-        <div class="wrap">
-          <div class="section-label">Common Questions</div>
-          <h2
-            style="
-              font-size: clamp(42px, 7vw, 80px);
-              line-height: 0.9;
-              margin-bottom: 12px;
-            "
-          >
-            You're Probably<br /><span class="gold">Wondering...</span>
-          </h2>
-          <div class="faq-list">
-            <div class="faq-item">
-              <div class="faq-q" onclick="toggleFaq(this)">
-                I already have a job. Is this still for me?<span
-                  class="faq-icon"
-                  >+</span
-                >
-              </div>
-              <div class="faq-a">
-                Absolutely. Most of our best results come from professionals who
-                are currently employed but want to upgrade to a better-paying
-                role — remote, international, or a significant salary jump. You
-                don't need to be job-hunting right now. You need to be
-                positioned for when the right opportunity appears.
-              </div>
-            </div>
-            <div class="faq-item">
-              <div class="faq-q" onclick="toggleFaq(this)">
-                What if I'm not in tech? Does this work for other
-                industries?<span class="faq-icon">+</span>
-              </div>
-              <div class="faq-a">
-                Yes. The framework works for professionals across Product
-                Design, Data, Finance, HR, Project Management, Marketing,
-                Consulting, and more. The positioning and LinkedIn principles
-                are universal. We've seen results across 15+ industries.
-              </div>
-            </div>
-            <div class="faq-item">
-              <div class="faq-q" onclick="toggleFaq(this)">
-                How much time do I need to commit each week?<span
-                  class="faq-icon"
-                  >+</span
-                >
-              </div>
-              <div class="faq-a">
-                Roughly 4–6 hours per week. This includes watching the training,
-                completing the weekly deliverable, and attending live sessions.
-                The program is designed around working professionals — dense and
-                focused, not padded. If you block weekend mornings, that's more
-                than enough.
-              </div>
-            </div>
-            <div class="faq-item">
-              <div class="faq-q" onclick="toggleFaq(this)">
-                Is ₦12,000 really the full price? No upsells?<span
-                  class="faq-icon"
-                  >+</span
-                >
-              </div>
-              <div class="faq-a">
-                ₦12,000 is the complete Founders Launch price. It covers the
-                full 6-week framework, all live sessions, mentorship, templates,
-                private community, and lifetime recording access. No hidden
-                fees. No required upgrades. This price exists because it's our
-                first public cohort.
-              </div>
-            </div>
-            <div class="faq-item">
-              <div class="faq-q" onclick="toggleFaq(this)">
-                What if I can't attend the live sessions?<span class="faq-icon"
-                  >+</span
-                >
-              </div>
-              <div class="faq-a">
-                All sessions are recorded and you'll have lifetime access. We
-                strongly recommend attending live for Q&amp;A and real-time
-                feedback, but the recordings are comprehensive. Many
-                participants have achieved excellent results going through
-                recordings alone.
-              </div>
-            </div>
-            <div class="faq-item">
-              <div class="faq-q" onclick="toggleFaq(this)">
-                How quickly can I expect results?<span class="faq-icon">+</span>
-              </div>
-              <div class="faq-a">
-                Some participants see recruiter interest within 1–2 weeks of
-                completing the LinkedIn module. Offer-stage outcomes typically
-                happen within 4–12 weeks of completing the program. The
-                framework compresses timelines significantly — but only if you
-                do the work.
-              </div>
-            </div>
-            <div class="faq-item">
-              <div class="faq-q" onclick="toggleFaq(this)">
-                Is there a refund policy?<span class="faq-icon">+</span>
-              </div>
-              <div class="faq-a">
-                Yes — 7 days. Attend the program, genuinely implement the
-                framework, and if you feel it delivered no value, reach out
-                within 7 days. We'll process your refund. We stand behind the
-                quality of this program. Our reputation depends on your results.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="divider" style="position: relative; z-index: 2"></div>
-
       <!-- WHO IS THIS FOR -->
-      <section style="padding: 80px 0">
+      <section class="for-section">
         <div class="wrap">
           <div class="section-label">Be Honest With Yourself</div>
           <h2
@@ -2184,39 +1840,6 @@
         </div>
       </section>
 
-      <!-- INLINE URGENCY TIMER -->
-      <div class="wrap" style="position: relative; z-index: 2">
-        <div class="inline-urgency">
-          <div>
-            <div class="iu-label">Early Access Closing In</div>
-            <div class="iu-text">Price Goes Up<br />When This Hits Zero.</div>
-          </div>
-          <div class="iu-timer">
-            <div class="iu-unit">
-              <span class="iu-num" id="iu-hours">--</span>
-              <div class="iu-lbl">Hrs</div>
-            </div>
-            <div class="iu-sep">:</div>
-            <div class="iu-unit">
-              <span class="iu-num" id="iu-mins">--</span>
-              <div class="iu-lbl">Min</div>
-            </div>
-            <div class="iu-sep">:</div>
-            <div class="iu-unit">
-              <span class="iu-num" id="iu-secs">--</span>
-              <div class="iu-lbl">Sec</div>
-            </div>
-          </div>
-          <button
-            class="btn-primary"
-            onclick="goTo('countdown')"
-            style="font-size: 13px; padding: 16px 32px; white-space: nowrap"
-          >
-            ⚡ Claim ₦12,000 Price
-          </button>
-        </div>
-      </div>
-
       <!-- FINAL CTA -->
       <section class="final-cta">
         <div class="wrap">
@@ -2237,13 +1860,7 @@
           >
             ⚡ &nbsp;Yes — Secure My Seat
           </button>
-          <div
-            style="
-              margin-top: 16px;
-              font-size: 12px;
-              color: rgba(240, 237, 228, 0.42);
-            "
-          >
+          <div style="margin-top: 16px; font-size: 12px; color: var(--muted)">
             Early access seats are limited · Price increases after cohort fills
           </div>
         </div>
@@ -2256,7 +1873,9 @@
       </footer>
     </div>
 
-    <!-- ══════════════ PAGE 2 — COUNTDOWN ══════════════ -->
+    <!-- ════════════════════════════════════════════
+       PAGE 2 — COUNTDOWN / URGENCY
+  ════════════════════════════════════════════ -->
     <div class="page" id="page-countdown">
       <nav>
         <div class="wrap-wide nav-inner">
@@ -2270,6 +1889,7 @@
           </button>
         </div>
       </nav>
+
       <section class="countdown-hero">
         <div class="wrap" style="text-align: center">
           <div style="margin-bottom: 24px">
@@ -2283,7 +1903,9 @@
             This is your window. Once early access closes, the Founders Launch
             Price of ₦12,000 is gone. Future cohorts will pay the full price.
           </p>
-          <div class="big-timer">
+
+          <!-- BIG TIMER -->
+          <div class="big-timer" id="bigTimer">
             <div class="big-unit">
               <span class="big-num" id="bt-days">02</span>
               <div class="big-lbl">Days</div>
@@ -2304,15 +1926,18 @@
               <div class="big-lbl">Seconds</div>
             </div>
           </div>
+
+          <!-- SEATS BAR -->
           <div class="seats-bar">
             <div class="seats-bar-label">
-              <span>Seats Claimed</span
-              ><span style="color: var(--gold)">1,482 / 2,000</span>
+              <span>Seats Claimed</span>
+              <span style="color: var(--gold)">1,482 / 2,000</span>
             </div>
             <div class="seats-bar-track">
               <div class="seats-bar-fill"></div>
             </div>
           </div>
+
           <button
             class="btn-primary"
             onclick="goTo('checkout')"
@@ -2320,10 +1945,11 @@
           >
             ⚡ &nbsp;Claim My Seat — ₦12,000
           </button>
-          <div style="font-size: 12px; color: rgba(240, 237, 228, 0.42)">
+          <div style="font-size: 12px; color: var(--muted)">
             Only 518 seats remaining at this price
           </div>
         </div>
+
         <div class="wrap" style="margin-top: 80px">
           <div class="urgency-points">
             <div class="urgency-card">
@@ -2346,17 +1972,22 @@
               <div class="uc-num">03</div>
               <h4>Live Access <em>Included</em></h4>
               <p>
-                Early access members get priority placement for live virtual
+                Early access members get priority placement for the live virtual
                 intensive sessions — which cannot be replicated in recordings.
               </p>
             </div>
           </div>
         </div>
       </section>
-      <footer><div class="wrap">© 2026 Mentel Ltd · mentelltd.com</div></footer>
+
+      <footer>
+        <div class="wrap">© 2026 Mentel Ltd · mentelltd.com</div>
+      </footer>
     </div>
 
-    <!-- ══════════════ PAGE 3 — CHECKOUT ══════════════ -->
+    <!-- ════════════════════════════════════════════
+       PAGE 3 — CHECKOUT
+  ════════════════════════════════════════════ -->
     <div class="page" id="page-checkout">
       <nav>
         <div class="wrap-wide nav-inner">
@@ -2370,6 +2001,8 @@
           </button>
         </div>
       </nav>
+
+      <!-- MINI TIMER -->
       <div
         style="
           background: rgba(255, 200, 0, 0.06);
@@ -2388,18 +2021,23 @@
             text-transform: uppercase;
             color: var(--gold);
           "
-          >⏳ Early Access Closes In: &nbsp;<span id="mini-timer">--:--:--</span
-          >&nbsp;· &nbsp;518 Seats Remaining</span
         >
+          ⏳ Early Access Closes In: &nbsp;
+          <span id="mini-timer">--:--:--</span>
+          &nbsp;· &nbsp;518 Seats Remaining
+        </span>
       </div>
+
       <div class="wrap-wide">
         <div class="checkout-layout">
+          <!-- LEFT: ORDER SUMMARY -->
           <div class="order-summary">
             <div class="section-label">Complete Your Registration</div>
             <h2>Secure Your<br /><span class="gold">Seat.</span></h2>
             <p class="os-sub">
               You're one step away from your positioning shift.
             </p>
+
             <div class="order-include">
               <h4>What's Included:</h4>
               <div class="oi-item">
@@ -2435,6 +2073,7 @@
                 <div class="oi-text">7-Day Money-Back Guarantee</div>
               </div>
             </div>
+
             <div class="order-price-box">
               <div class="opb-row">
                 <div class="opb-label">Program Full Price</div>
@@ -2449,6 +2088,7 @@
                 <div class="opb-val">₦12,000</div>
               </div>
             </div>
+
             <div
               style="
                 margin-top: 28px;
@@ -2470,44 +2110,41 @@
               >
                 🛡️ Zero Risk
               </div>
-              <p
-                style="
-                  font-size: 13px;
-                  color: rgba(240, 237, 228, 0.42);
-                  line-height: 1.6;
-                "
-              >
+              <p style="font-size: 13px; color: var(--muted); line-height: 1.6">
                 Implement the framework. If it delivers no value, reach out
                 within 7 days for a refund. No hassle. No questions.
               </p>
             </div>
           </div>
+
+          <!-- RIGHT: FORM -->
           <div class="checkout-form-wrap">
             <h3>Your <span class="gold">Details</span></h3>
             <div class="cf-sub">Secure checkout · Powered by Paystack</div>
+
             <div class="form-group">
-              <label>Full Name</label
-              ><input type="text" id="f-name" placeholder="Your full name" />
+              <label>Full Name</label>
+              <input type="text" id="f-name" placeholder="Your full name" />
             </div>
             <div class="form-group">
-              <label>Email Address</label
-              ><input type="email" id="f-email" placeholder="you@email.com" />
+              <label>Email Address</label>
+              <input type="email" id="f-email" placeholder="you@email.com" />
             </div>
             <div class="form-group">
-              <label>Phone Number</label
-              ><input type="tel" id="f-phone" placeholder="+234 000 000 0000" />
+              <label>Phone Number</label>
+              <input type="tel" id="f-phone" placeholder="+234 000 000 0000" />
             </div>
             <div class="form-group">
-              <label>Current Role / Profession</label
-              ><input
+              <label>Current Role / Profession</label>
+              <input
                 type="text"
                 id="f-role"
                 placeholder="e.g. Software Engineer, HR Manager"
               />
             </div>
             <div class="form-group">
-              <label>What's your #1 career goal?</label
-              ><select id="f-goal">
+              <label>What's your #1 career goal?</label>
+              <select id="f-goal">
                 <option value="">Select one...</option>
                 <option>Land a remote dollar-paying job</option>
                 <option>Get promoted in current role</option>
@@ -2516,18 +2153,14 @@
                 <option>Build a global career profile</option>
               </select>
             </div>
+
             <button class="paystack-btn" onclick="initPaystack()">
-              ⚡ &nbsp;Pay ₦12,000 &amp; Secure Seat
+              ⚡ &nbsp;Pay ₦12,000 & Secure Seat
             </button>
+
             <div
-              style="
-                display: flex;
-                align-items: center;
-                gap: 12px;
-                margin-top: 14px;
-                justify-content: center;
-                flex-wrap: wrap;
-              "
+              class="secure-badges"
+              style="margin-top: 14px; justify-content: center"
             >
               <div class="sb-item">SSL Secured</div>
               <div class="sb-item">Paystack Protected</div>
@@ -2536,10 +2169,15 @@
           </div>
         </div>
       </div>
-      <footer><div class="wrap">© 2026 Mentel Ltd · mentelltd.com</div></footer>
+
+      <footer>
+        <div class="wrap">© 2026 Mentel Ltd · mentelltd.com</div>
+      </footer>
     </div>
 
-    <!-- ══════════════ PAGE 4 — THANK YOU ══════════════ -->
+    <!-- ════════════════════════════════════════════
+       PAGE 4 — THANK YOU
+  ════════════════════════════════════════════ -->
     <div class="page" id="page-thankyou">
       <nav>
         <div class="wrap-wide nav-inner">
@@ -2547,6 +2185,7 @@
           <div class="nav-right">mentelltd.com</div>
         </div>
       </nav>
+
       <section class="ty-hero">
         <div class="wrap">
           <div class="ty-check">✓</div>
@@ -2561,6 +2200,7 @@
             Welcome to the High-Income Career Accelerator. Your seat is
             confirmed. The shift starts now.
           </p>
+
           <div
             style="
               background: var(--bg2);
@@ -2594,11 +2234,12 @@
             >
               Welcome, [Your Name]
             </div>
-            <div style="font-size: 13px; color: rgba(240, 237, 228, 0.42)">
+            <div style="font-size: 13px; color: var(--muted)">
               Confirmation sent to your email · Check your inbox &amp; spam
               folder
             </div>
           </div>
+
           <div
             class="section-label"
             style="text-align: center; display: block; margin-bottom: 32px"
@@ -2642,7 +2283,8 @@
           </div>
         </div>
       </section>
-      <section style="padding: 80px 0; text-align: center">
+
+      <section class="ty-share">
         <div class="wrap">
           <div
             class="section-label"
@@ -2650,23 +2292,14 @@
           >
             Spread The Word
           </div>
-          <h3 style="font-size: 42px; margin-bottom: 16px">
-            Know Someone<br /><span class="gold">Who Needs This?</span>
-          </h3>
-          <p
-            style="
-              font-size: 15px;
-              color: rgba(240, 237, 228, 0.42);
-              max-width: 480px;
-              margin: 0 auto 32px;
-            "
-          >
+          <h3>Know Someone<br /><span class="gold">Who Needs This?</span></h3>
+          <p>
             If you know another Nigerian professional tired of earning below
             their potential, share this with them. Early access ends soon.
           </p>
           <div class="share-btns">
             <a
-              href="https://wa.me/?text=I%20just%20secured%20my%20seat%20at%20the%20High-Income%20Career%20Accelerator%20by%20Mentel%20Ltd.%20Only%20%E2%82%A612%2C000%20for%20early%20access%20%E2%80%94%20mentelltd.com"
+              href="https://wa.me/?text=I%20just%20secured%20my%20seat%20at%20the%20High-Income%20Career%20Accelerator%20by%20Mentel%20Ltd.%20Only%20%E2%82%A612%2C000%20for%20early%20access%20%E2%80%94%20check%20it%20out%3A%20mentelltd.com"
               target="_blank"
               class="btn-primary"
               style="
@@ -2675,18 +2308,21 @@
                 font-size: 12px;
                 padding: 15px 28px;
               "
-              >📲 Share on WhatsApp</a
             >
+              📲 Share on WhatsApp
+            </a>
             <a
-              href="https://twitter.com/intent/tweet?text=Just%20secured%20my%20seat%20at%20%40MentelLtd%27s%20High-Income%20Career%20Accelerator.%20Early%20access%20%E2%82%A612%2C000%20%F0%9F%94%A5%20mentelltd.com"
+              href="https://twitter.com/intent/tweet?text=Just%20secured%20my%20seat%20at%20%40MentelLtd%27s%20High-Income%20Career%20Accelerator.%20Nigerian%20professionals%20%E2%80%94%20this%20is%20the%20positioning%20system%20we%20needed.%20Early%20access%20%E2%82%A612%2C000%20%F0%9F%94%A5%20mentelltd.com"
               target="_blank"
               class="btn-ghost"
               style="font-size: 12px; padding: 15px 28px"
-              >𝕏 Share on X</a
             >
+              𝕏 Share on X
+            </a>
           </div>
         </div>
       </section>
+
       <footer>
         <div class="wrap">
           © 2026 Mentel Ltd · mentelltd.com · All Rights Reserved
@@ -2695,75 +2331,81 @@
     </div>
 
     <script>
-      function goTo(id) {
+      // ─── PAGE NAVIGATION ───
+      function goTo(pageId) {
         document
           .querySelectorAll(".page")
           .forEach((p) => p.classList.remove("active"));
-        const el = document.getElementById("page-" + id);
+        const el = document.getElementById("page-" + pageId);
         if (el) {
           el.classList.add("active");
           window.scrollTo({ top: 0, behavior: "smooth" });
         }
       }
 
-      function toggleFaq(el) {
-        const item = el.closest(".faq-item");
-        const isOpen = item.classList.contains("open");
-        document
-          .querySelectorAll(".faq-item")
-          .forEach((i) => i.classList.remove("open"));
-        if (!isOpen) item.classList.add("open");
-      }
-
+      // ─── COUNTDOWN TIMER ───
+      // Target: 2 days, 17 hours from page load
       const endTime =
         new Date().getTime() +
         2 * 24 * 60 * 60 * 1000 +
         17 * 60 * 60 * 1000 +
         44 * 60 * 1000 +
         8 * 1000;
+
       function pad(n) {
         return String(n).padStart(2, "0");
       }
 
       function updateTimers() {
-        const diff = Math.max(0, endTime - new Date().getTime());
+        const now = new Date().getTime();
+        const diff = Math.max(0, endTime - now);
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
         const hours = Math.floor(
           (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
         );
         const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const secs = Math.floor((diff % (1000 * 60)) / 1000);
-        const totalH = days * 24 + hours;
-        const s = (id, v) => {
-          const e = document.getElementById(id);
-          if (e) e.textContent = v;
-        };
-        s("bt-days", pad(days));
-        s("bt-hours", pad(hours));
-        s("bt-mins", pad(mins));
-        s("bt-secs", pad(secs));
-        s("iu-hours", pad(totalH));
-        s("iu-mins", pad(mins));
-        s("iu-secs", pad(secs));
-        s("mini-timer", `${pad(totalH)}:${pad(mins)}:${pad(secs)}`);
+
+        // Big timer
+        const btDays = document.getElementById("bt-days");
+        const btHours = document.getElementById("bt-hours");
+        const btMins = document.getElementById("bt-mins");
+        const btSecs = document.getElementById("bt-secs");
+        if (btDays) btDays.textContent = pad(days);
+        if (btHours) btHours.textContent = pad(hours);
+        if (btMins) btMins.textContent = pad(mins);
+        if (btSecs) btSecs.textContent = pad(secs);
+
+        // Mini timer on checkout page
+        const mini = document.getElementById("mini-timer");
+        if (mini) mini.textContent = `${pad(hours)}:${pad(mins)}:${pad(secs)}`;
       }
+
       setInterval(updateTimers, 1000);
       updateTimers();
 
+      // ─── PAYSTACK INTEGRATION ───
       function initPaystack() {
         const name = document.getElementById("f-name").value.trim();
         const email = document.getElementById("f-email").value.trim();
         const phone = document.getElementById("f-phone").value.trim();
+
         if (!name || !email) {
           alert("Please enter your name and email to continue.");
           return;
         }
-        const ty = document.getElementById("ty-name");
-        if (ty) ty.textContent = `Welcome, ${name}`;
+
+        // Update thank you page name
+        const tyName = document.getElementById("ty-name");
+        if (tyName) tyName.textContent = `Welcome, ${name}`;
+
+        // ── PAYSTACK INLINE ──
+        // Replace 'pk_test_YOUR_PUBLIC_KEY' with your actual Paystack public key
+        // and update the callback/redirect as needed.
         const handler = PaystackPop.setup({
           key: "pk_test_YOUR_PUBLIC_KEY_HERE", // 🔑 Replace with your Paystack public key
           email: email,
-          amount: 1200000,
+          amount: 1200000, // Amount in kobo (₦12,000 × 100)
           currency: "NGN",
           ref: "MENTEL-" + Date.now(),
           metadata: {
@@ -2773,17 +2415,27 @@
                 variable_name: "full_name",
                 value: name,
               },
-              { display_name: "Phone", variable_name: "phone", value: phone },
+              {
+                display_name: "Phone Number",
+                variable_name: "phone_number",
+                value: phone,
+              },
             ],
           },
-          callback: function () {
+          callback: function (response) {
+            // Payment successful
             goTo("thankyou");
           },
-          onClose: function () {},
+          onClose: function () {
+            // User closed the payment popup — do nothing
+          },
         });
+
         handler.openIframe();
       }
     </script>
+
+    <!-- Paystack inline script (loads the PaystackPop object) -->
     <script src="https://js.paystack.co/v1/inline.js"></script>
   </body>
 </html>

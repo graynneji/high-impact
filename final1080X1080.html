@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>High-Income Career Accelerator 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 1080px;
+        height: 1080px;
+        overflow: hidden;
+        background: #0a0a0a;
+        font-family: "DM Sans", sans-serif;
+      }
+
+      .frame {
+        width: 1080px;
+        height: 1080px;
+        position: relative;
+        background: #0a0a0a;
+        overflow: hidden;
+      }
+
+      /* ── BACKGROUND GRID (matches original) */
+      .grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 200, 0, 0.055) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 200, 0, 0.055) 1px, transparent 1px);
+        background-size: 72px 72px;
+      }
+
+      /* ── GLOWS */
+      .glow-right {
+        position: absolute;
+        top: -80px;
+        right: -40px;
+        width: 680px;
+        height: 680px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 200, 0, 0.16) 0%,
+          transparent 60%
+        );
+        pointer-events: none;
+      }
+      .glow-left {
+        position: absolute;
+        bottom: 160px;
+        left: -80px;
+        width: 420px;
+        height: 420px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 100, 0, 0.1) 0%,
+          transparent 65%
+        );
+        pointer-events: none;
+      }
+
+      /* ── DIAGONAL ACCENT LINE (from original) */
+      .diag {
+        position: absolute;
+        top: 0;
+        right: 310px;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(
+          180deg,
+          transparent 0%,
+          rgba(255, 200, 0, 0.35) 30%,
+          rgba(255, 200, 0, 0.35) 70%,
+          transparent 100%
+        );
+        transform: rotate(7deg);
+        transform-origin: top center;
+      }
+
+      /* ── YEAR WATERMARK */
+      .year-bg {
+        position: absolute;
+        bottom: 190px;
+        left: 30px;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 340px;
+        color: rgba(255, 200, 0, 0.035);
+        letter-spacing: -0.04em;
+        line-height: 1;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      /* ── TOP GOLD BAR */
+      .top-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          #ffc800 0%,
+          #ff8800 50%,
+          transparent 100%
+        );
+        z-index: 20;
+      }
+
+      /* ══════════════════════════════════
+     ZONE 1: HEADER ROW (eyebrow)
+     top: 4px → 60px
+  ══════════════════════════════════ */
+      .header-row {
+        position: absolute;
+        top: 36px;
+        left: 60px;
+        right: 360px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .eyebrow-line {
+        width: 32px;
+        height: 2px;
+        background: #ffc800;
+        flex-shrink: 0;
+      }
+      .eyebrow {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: #ffc800;
+      }
+
+      /* ══════════════════════════════════
+     ZONE 2: LEFT COLUMN — Headline + sub + tags
+     top: 80px → 730px, left: 60px, width: 640px
+  ══════════════════════════════════ */
+      .left-col {
+        position: absolute;
+        top: 80px;
+        left: 60px;
+        width: 650px;
+      }
+
+      .headline {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 156px;
+        line-height: 0.88;
+        letter-spacing: 0.01em;
+        color: #ffffff;
+        margin-bottom: 0;
+      }
+      .headline .gold {
+        color: #ffc800;
+      }
+
+      .sub {
+        font-size: 17.5px;
+        font-weight: 300;
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.46);
+        max-width: 540px;
+        line-height: 1.6;
+        margin-top: 28px;
+        margin-bottom: 32px;
+      }
+
+      .tags {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .tag {
+        font-size: 11.5px;
+        font-weight: 700;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.65);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 7px 16px;
+        border-radius: 3px;
+      }
+      .tag.gold {
+        color: #ffc800;
+        border-color: rgba(255, 200, 0, 0.4);
+        background: rgba(255, 200, 0, 0.07);
+      }
+
+      /* ══════════════════════════════════
+     ZONE 3: RIGHT COLUMN — Price panel
+     top: 4px → 860px, right: 0, width: 340px
+  ══════════════════════════════════ */
+      .right-col {
+        position: absolute;
+        top: 4px;
+        right: 0;
+        width: 340px;
+        bottom: 220px;
+        background: rgba(15, 12, 5, 0.6);
+        border-left: 1px solid rgba(255, 200, 0, 0.18);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 48px;
+      }
+
+      .price-label {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.32);
+        margin-bottom: 6px;
+      }
+      .price-old {
+        font-size: 20px;
+        color: rgba(255, 255, 255, 0.22);
+        text-decoration: line-through;
+        margin-bottom: 4px;
+        font-weight: 400;
+      }
+      .price-new {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 88px;
+        color: #ffc800;
+        line-height: 0.95;
+        margin-bottom: 6px;
+        letter-spacing: 0.02em;
+      }
+      .price-sub {
+        font-size: 12.5px;
+        color: rgba(255, 255, 255, 0.35);
+        margin-bottom: 34px;
+        letter-spacing: 0.06em;
+      }
+
+      .divider {
+        width: 100%;
+        height: 1px;
+        background: rgba(255, 200, 0, 0.14);
+        margin-bottom: 26px;
+      }
+
+      .feature {
+        margin-bottom: 20px;
+      }
+      .feature-title {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 34px;
+        color: #ffffff;
+        letter-spacing: 0.04em;
+        line-height: 1;
+      }
+      .feature-title em {
+        color: #ffc800;
+        font-style: normal;
+      }
+      .feature-sub {
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.28);
+        margin-top: 3px;
+      }
+
+      .cta-btn {
+        margin-top: 24px;
+        background: #ffc800;
+        color: #050505;
+        font-size: 13.5px;
+        font-weight: 700;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        padding: 16px 0;
+        border-radius: 3px;
+        display: block;
+        text-align: center;
+        width: 100%;
+      }
+
+      /* ══════════════════════════════════
+     ZONE 4: SPEAKER FRAME
+     Floats over the dividing line
+  ══════════════════════════════════ */
+      .speaker-wrap {
+        position: absolute;
+        top: 740px;
+        left: 60px;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .speaker-col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .speaker-badge-top {
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(255, 200, 0, 0.55);
+        margin-bottom: 8px;
+      }
+
+      .speaker-circle {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 200, 0, 0.55);
+        background: rgba(255, 200, 0, 0.04);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow:
+          0 0 0 6px rgba(255, 200, 0, 0.05),
+          0 0 32px rgba(255, 200, 0, 0.14);
+      }
+      .speaker-circle::before {
+        content: "";
+        position: absolute;
+        inset: -10px;
+        border-radius: 50%;
+        border: 1px dashed rgba(255, 200, 0, 0.22);
+      }
+
+      .speaker-icon {
+        width: 36px;
+        height: 36px;
+        opacity: 0.28;
+      }
+
+      .speaker-hint {
+        font-size: 7px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(255, 200, 0, 0.38);
+        margin-top: 5px;
+        text-align: center;
+        line-height: 1.5;
+      }
+
+      .speaker-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .speaker-role {
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255, 200, 0, 0.5);
+        margin-bottom: 4px;
+      }
+      .speaker-name {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 28px;
+        color: #ffffff;
+        letter-spacing: 0.06em;
+        line-height: 1;
+      }
+      .speaker-title {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.28);
+        margin-top: 4px;
+      }
+
+      /* ══════════════════════════════════
+     ZONE 5: TESTIMONIALS STRIP
+     bottom 220px, full width
+  ══════════════════════════════════ */
+      .testi-strip {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 220px;
+        display: flex;
+        border-top: 1px solid rgba(255, 200, 0, 0.12);
+        background: rgba(4, 3, 1, 0.7);
+      }
+
+      .testi {
+        flex: 1;
+        padding: 26px 36px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-right: 1px solid rgba(255, 200, 0, 0.08);
+      }
+      .testi:last-child {
+        border-right: none;
+      }
+
+      .testi-stars {
+        color: #ffc800;
+        font-size: 13px;
+        letter-spacing: 3px;
+        margin-bottom: 10px;
+      }
+      .testi-quote {
+        font-size: 15px;
+        font-weight: 300;
+        font-style: italic;
+        color: rgba(255, 255, 255, 0.82);
+        line-height: 1.55;
+        margin-bottom: 12px;
+      }
+      .testi-name {
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #ffc800;
+      }
+
+      /* Seats counter */
+      .seats-block {
+        flex: 0 0 220px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-left: 1px solid rgba(255, 200, 0, 0.08);
+      }
+      .seats-num {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 64px;
+        color: #ffc800;
+        line-height: 1;
+        letter-spacing: 0.02em;
+      }
+      .seats-label {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.25);
+        margin-top: 5px;
+        text-align: center;
+        line-height: 1.5;
+      }
+
+      /* BRAND */
+      .brand {
+        position: absolute;
+        bottom: 228px;
+        left: 60px;
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.14);
+      }
+
+      /* Right col bottom extension into testi zone */
+      .right-col-bottom {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 340px;
+        height: 220px;
+        background: rgba(15, 12, 5, 0.55);
+        border-left: 1px solid rgba(255, 200, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <!-- BACKGROUNDS -->
+      <div class="grid"></div>
+      <div class="glow-right"></div>
+      <div class="glow-left"></div>
+      <div class="diag"></div>
+      <div class="year-bg">2026</div>
+      <div class="top-bar"></div>
+
+      <!-- EYEBROW -->
+      <div class="header-row">
+        <div class="eyebrow-line"></div>
+        <div class="eyebrow">Mentel Ltd · 3-Day Virtual Summit</div>
+      </div>
+
+      <!-- LEFT: HEADLINE + SUB + TAGS -->
+      <div class="left-col">
+        <div class="headline">
+          HIGH-INCOME<br />
+          <span class="gold">CAREER</span><br />
+          ACCELERATOR
+        </div>
+        <div class="sub">
+          "How To Increase Your Income, Position Yourself For Global
+          Opportunities &amp; Become Highly Valuable — Even In This Economy"
+        </div>
+        <div class="tags">
+          <div class="tag gold">Early Access ₦12,000</div>
+          <div class="tag">First 2,000 Seats</div>
+          <div class="tag">Live · Virtual · 2026</div>
+        </div>
+      </div>
+
+      <!-- RIGHT: PRICE PANEL -->
+      <div class="right-col">
+        <div class="price-label">Founders Launch Price</div>
+        <div class="price-old">₦200,000</div>
+        <div class="price-new">₦12,000</div>
+        <div class="price-sub">One-time · All inclusive</div>
+
+        <div class="divider"></div>
+
+        <div class="feature">
+          <div class="feature-title"><em>6</em>-Week Framework</div>
+          <div class="feature-sub">Strategy + Templates</div>
+        </div>
+        <div class="feature">
+          <div class="feature-title">Live <em>Mentorship</em></div>
+          <div class="feature-sub">+ Private Career Network</div>
+        </div>
+        <div class="feature">
+          <div class="feature-title">Global <em>Access</em></div>
+          <div class="feature-sub">LinkedIn &amp; Digital Income</div>
+        </div>
+
+        <div class="cta-btn">⚡ &nbsp;Secure Your Seat</div>
+      </div>
+
+      <!-- SPEAKER FRAME -->
+      <div class="speaker-wrap">
+        <div class="speaker-col">
+          <div class="speaker-badge-top">Lead Instructor</div>
+          <div class="speaker-circle">
+            <!-- SWAP IN REAL PHOTO: -->
+            <img
+              src="84023651-removebg-preview.png"
+              style="
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 50%;
+                position: absolute;
+                inset: 0;
+              "
+            />
+
+            <!-- <svg
+              class="speaker-icon"
+              viewBox="0 0 52 52"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle
+                cx="26"
+                cy="20"
+                r="10"
+                stroke="#FFC800"
+                stroke-width="1.5"
+              />
+              <path
+                d="M6 46c0-11 8.954-20 20-20s20 8.954 20 20"
+                stroke="#FFC800"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+            <div class="speaker-hint">Add Photo<br />Here</div> -->
+          </div>
+        </div>
+        <div class="speaker-info">
+          <div class="speaker-role">Lead Instructor</div>
+          <div class="speaker-name">Speaker Name</div>
+          <div class="speaker-title">Title · Mentel Ltd</div>
+        </div>
+      </div>
+
+      <!-- BRAND -->
+      <div class="brand">mentelltd.com</div>
+
+      <!-- TESTIMONIAL STRIP -->
+      <div class="testi-strip">
+        <div class="testi">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-quote">
+            "From ₦180k/month to landing a $2,500 remote role in 4 months."
+          </div>
+          <div class="testi-name">— Daniel A., Product Designer</div>
+        </div>
+        <div class="testi">
+          <div class="testi-stars">★★★★★</div>
+          <div class="testi-quote">
+            "I repositioned my CV and got 3 interviews in 2 weeks."
+          </div>
+          <div class="testi-name">— Chioma O., Data Analyst</div>
+        </div>
+        <div class="seats-block">
+          <div class="seats-num">2,000+</div>
+          <div class="seats-label">Seats<br />Filling Fast</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

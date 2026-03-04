@@ -3,465 +3,326 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>High-Income Career Accelerator 2026 — Mentel Ltd.</title>
+    <title>High-Income Career Accelerator 2026 — Mentel Ltd</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap"
       rel="stylesheet"
     />
     <style>
-      *,
-      *::before,
-      *::after {
+      :root {
+        --gold: #ffc800;
+        --gold-dim: rgba(255, 200, 0, 0.18);
+        --orange: #ff8800;
+        --bg: #080807;
+        --bg2: #0f0e09;
+        --text: #f0ede4;
+        --muted: rgba(240, 237, 228, 0.42);
+        --border: rgba(255, 200, 0, 0.14);
+      }
+
+      * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
 
-      :root {
-        --gold: #c9a84c;
-        --gold-light: #f0d080;
-        --gold-dim: #8a6e2f;
-        --bg: #080808;
-        --border: rgba(201, 168, 76, 0.18);
-        --text: #f0ede6;
-        --muted: #7a7a7a;
-        --accent: #7b5ea7;
-        --pad-x: clamp(20px, 5vw, 64px);
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
+      html,
       body {
-        background: #030303;
-        min-height: 100vh;
+        background: var(--bg);
+        color: var(--text);
         font-family: "DM Sans", sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: clamp(16px, 4vw, 48px) clamp(12px, 3vw, 32px);
+        font-size: 16px;
+        line-height: 1.6;
+        overflow-x: hidden;
       }
 
-      /* ── FLYER ── */
-      .flyer {
-        width: 100%;
-        max-width: 1080px;
-        background: var(--bg);
-        border: 1px solid var(--border);
-        position: relative;
-        overflow: hidden;
+      /* ─── PAGE SYSTEM ─── */
+      .page {
+        display: none;
+        min-height: 100vh;
       }
-      .flyer::after {
-        content: "";
-        position: absolute;
-        top: -25%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 120%;
+      .page.active {
+        display: block;
+      }
+
+      /* ─── SHARED COMPONENTS ─── */
+      .grid-bg {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        background-image:
+          linear-gradient(rgba(255, 200, 0, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 200, 0, 0.04) 1px, transparent 1px);
+        background-size: 60px 60px;
+      }
+      .glow-tr {
+        position: fixed;
+        top: -120px;
+        right: -120px;
+        width: 700px;
         height: 700px;
         background: radial-gradient(
-          ellipse at center,
-          rgba(201, 168, 76, 0.06) 0%,
+          circle,
+          rgba(255, 200, 0, 0.1) 0%,
+          transparent 60%
+        );
+        pointer-events: none;
+        z-index: 0;
+      }
+      .glow-bl {
+        position: fixed;
+        bottom: -100px;
+        left: -80px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 100, 0, 0.08) 0%,
           transparent 65%
         );
         pointer-events: none;
         z-index: 0;
       }
-      .content {
-        position: relative;
-        z-index: 1;
-      }
 
-      /* Geometric */
-      .geo {
-        position: absolute;
+      .top-bar {
+        position: fixed;
         top: 0;
+        left: 0;
         right: 0;
-        width: clamp(100px, 28vw, 320px);
-        height: clamp(100px, 28vw, 320px);
-        pointer-events: none;
-        opacity: 0.18;
-        overflow: hidden;
-      }
-      .geo svg {
-        width: 100%;
-        height: 100%;
-      }
-
-      /* ── TOPBAR ── */
-      .topbar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 10px;
-        padding: clamp(14px, 2.5vw, 24px) var(--pad-x);
-        border-bottom: 1px solid var(--border);
-        background: rgba(201, 168, 76, 0.025);
-      }
-      .logo-area {
-        display: flex;
-        align-items: center;
-        gap: 11px;
-      }
-      .logo-mark {
-        width: clamp(30px, 3.8vw, 38px);
-        height: clamp(30px, 3.8vw, 38px);
-        border: 1.5px solid var(--gold);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: "Syne", sans-serif;
-        font-weight: 800;
-        font-size: clamp(12px, 1.4vw, 15px);
-        color: var(--gold);
-      }
-      .logo-text {
-        font-family: "Syne", sans-serif;
-        font-size: clamp(11px, 1.3vw, 13px);
-        font-weight: 700;
-        letter-spacing: 0.14em;
-        color: var(--text);
-        text-transform: uppercase;
-      }
-      .badge-virtual {
-        font-family: "DM Mono", monospace;
-        font-size: clamp(8px, 1vw, 10px);
-        letter-spacing: 0.18em;
-        color: var(--gold);
-        padding: 5px 14px;
-        border: 1px solid var(--border);
-        text-transform: uppercase;
-        white-space: nowrap;
+        height: 3px;
+        z-index: 100;
+        background: linear-gradient(
+          90deg,
+          var(--gold) 0%,
+          var(--orange) 60%,
+          transparent 100%
+        );
       }
 
-      /* ── HERO ── */
-      .hero {
-        padding: clamp(32px, 5.5vw, 72px) var(--pad-x) clamp(24px, 4vw, 52px);
+      .wrap {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 0 24px;
         position: relative;
+        z-index: 2;
       }
+      .wrap-wide {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px;
+        position: relative;
+        z-index: 2;
+      }
+
       .eyebrow {
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        font-family: "DM Mono", monospace;
-        font-size: clamp(8px, 1vw, 11px);
-        letter-spacing: 0.26em;
-        color: var(--gold);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.22em;
         text-transform: uppercase;
-        margin-bottom: clamp(16px, 2.8vw, 30px);
+        color: var(--gold);
       }
       .eyebrow::before {
         content: "";
-        display: block;
-        width: clamp(14px, 2.2vw, 26px);
-        height: 1px;
+        width: 28px;
+        height: 2px;
         background: var(--gold);
         flex-shrink: 0;
-      }
-      .headline {
-        font-family: "Syne", sans-serif;
-        font-size: clamp(30px, 6vw, 74px);
-        font-weight: 800;
-        line-height: 1;
-        color: var(--text);
-        letter-spacing: -0.03em;
-        margin-bottom: 4px;
-      }
-      .headline .accent-word {
-        color: var(--gold);
-      }
-      .headline-year {
-        font-family: "DM Mono", monospace;
-        font-size: clamp(30px, 6vw, 74px);
-        font-weight: 400;
-        letter-spacing: -0.02em;
-        color: var(--muted);
-        line-height: 1;
-      }
-      .tagline {
-        font-size: clamp(12px, 1.4vw, 15px);
-        line-height: 1.65;
-        color: rgba(240, 237, 230, 0.56);
-        max-width: 600px;
-        margin-top: clamp(16px, 2.8vw, 28px);
-        font-style: italic;
-        font-weight: 300;
-        border-left: 2px solid var(--gold);
-        padding-left: clamp(12px, 1.8vw, 20px);
-      }
-
-      /* ── DIVIDER ── */
-      .divider {
-        height: 1px;
-        background: linear-gradient(
-          90deg,
-          var(--border) 0%,
-          rgba(201, 168, 76, 0.35) 40%,
-          var(--border) 100%
-        );
-        margin: 0 var(--pad-x);
-      }
-
-      /* ── MID GRID ── */
-      .mid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        padding: clamp(24px, 4vw, 52px) var(--pad-x);
-      }
-      .col-left {
-        padding-right: clamp(18px, 3vw, 48px);
-        border-right: 1px solid var(--border);
-      }
-      .col-right {
-        padding-left: clamp(18px, 3vw, 48px);
       }
 
       .section-label {
-        font-family: "DM Mono", monospace;
-        font-size: clamp(8px, 0.9vw, 9.5px);
-        letter-spacing: 0.28em;
-        color: var(--gold-dim);
-        text-transform: uppercase;
-        margin-bottom: clamp(12px, 1.8vw, 20px);
-      }
-      .check-list,
-      .arrow-list {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        gap: clamp(9px, 1.4vw, 13px);
-      }
-      .check-list li,
-      .arrow-list li {
-        display: flex;
-        align-items: flex-start;
-        gap: 10px;
-        font-size: clamp(12px, 1.4vw, 14px);
-        color: rgba(240, 237, 230, 0.78);
-        line-height: 1.45;
-      }
-      .check-list li::before {
-        content: "✔";
-        color: var(--gold);
         font-size: 10px;
-        margin-top: 3px;
-        flex-shrink: 0;
+        font-weight: 700;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: rgba(255, 200, 0, 0.5);
+        margin-bottom: 14px;
       }
-      .arrow-list li::before {
-        content: "→";
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Bebas Neue", sans-serif;
+        letter-spacing: 0.03em;
+      }
+
+      .gold {
+        color: var(--gold);
+      }
+      .muted {
+        color: var(--muted);
+      }
+
+      .divider {
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--border),
+          transparent
+        );
+        margin: 60px 0;
+      }
+
+      /* CTA BUTTON */
+      .btn-primary {
+        display: inline-block;
+        background: var(--gold);
+        color: #060504;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        padding: 18px 40px;
+        border-radius: 3px;
+        cursor: pointer;
+        border: none;
+        text-decoration: none;
+        transition:
+          transform 0.15s,
+          box-shadow 0.15s;
+        box-shadow: 0 0 40px rgba(255, 200, 0, 0.25);
+      }
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 50px rgba(255, 200, 0, 0.4);
+      }
+
+      .btn-ghost {
+        display: inline-block;
+        background: transparent;
         color: var(--gold);
         font-size: 12px;
-        flex-shrink: 0;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        padding: 14px 32px;
+        border-radius: 3px;
+        cursor: pointer;
+        border: 1px solid var(--gold-dim);
+        text-decoration: none;
+        transition:
+          background 0.15s,
+          border-color 0.15s;
+      }
+      .btn-ghost:hover {
+        background: rgba(255, 200, 0, 0.06);
+        border-color: rgba(255, 200, 0, 0.4);
       }
 
-      /* ── VALUE SECTION ── */
-      .value-section {
-        padding: clamp(24px, 3.8vw, 48px) var(--pad-x);
-      }
-      .value-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: clamp(18px, 2.8vw, 30px);
-      }
-      .value-table th {
-        font-family: "DM Mono", monospace;
-        font-size: clamp(8px, 0.9vw, 9.5px);
-        letter-spacing: 0.22em;
-        color: var(--gold-dim);
+      /* TAG */
+      .tag {
+        display: inline-block;
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.13em;
         text-transform: uppercase;
-        text-align: left;
-        padding-bottom: 11px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: rgba(255, 255, 255, 0.55);
+        padding: 6px 14px;
+        border-radius: 3px;
+      }
+      .tag.gold {
+        color: var(--gold);
+        border-color: rgba(255, 200, 0, 0.35);
+        background: rgba(255, 200, 0, 0.06);
+      }
+
+      /* STAR */
+      .stars {
+        color: var(--gold);
+        letter-spacing: 3px;
+        font-size: 13px;
+      }
+
+      /* NAV */
+      nav {
+        position: relative;
+        z-index: 10;
+        padding: 24px 0 20px;
         border-bottom: 1px solid var(--border);
       }
-      .value-table th:last-child {
-        text-align: right;
-      }
-      .value-table td {
-        padding: clamp(9px, 1.4vw, 13px) 0;
-        font-size: clamp(12px, 1.3vw, 14px);
-        border-bottom: 1px solid rgba(201, 168, 76, 0.07);
-        color: rgba(240, 237, 230, 0.72);
-      }
-      .value-table td:last-child {
-        text-align: right;
-        font-family: "DM Mono", monospace;
-        color: var(--gold-light);
-        font-size: clamp(11px, 1.2vw, 13px);
-      }
-      .value-table tr.total td {
-        border-bottom: none;
-        padding-top: 14px;
-        color: var(--text);
-        font-weight: 500;
-        font-size: clamp(12px, 1.4vw, 14.5px);
-      }
-
-      /* ── PRICE BLOCK ── */
-      .price-block {
-        background: linear-gradient(
-          135deg,
-          rgba(201, 168, 76, 0.07) 0%,
-          rgba(123, 94, 167, 0.04) 100%
-        );
-        border: 1px solid var(--border);
-        padding: clamp(20px, 3.2vw, 36px) clamp(18px, 3.2vw, 44px);
+      .nav-inner {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: clamp(16px, 3vw, 36px);
-        flex-wrap: wrap;
-        position: relative;
-        overflow: hidden;
       }
-      .price-block::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 3px;
-        height: 100%;
-        background: linear-gradient(180deg, var(--gold), var(--accent));
+      .logo {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 22px;
+        letter-spacing: 0.12em;
+        color: var(--text);
       }
-      .price-left .original {
-        font-family: "DM Mono", monospace;
-        font-size: clamp(10px, 1.2vw, 13px);
-        color: var(--muted);
-        text-decoration: line-through;
-        margin-bottom: 4px;
-      }
-      .price-left .main-price {
-        font-family: "Syne", sans-serif;
-        font-size: clamp(36px, 6.5vw, 62px);
-        font-weight: 800;
+      .logo span {
         color: var(--gold);
-        letter-spacing: -0.03em;
-        line-height: 1;
       }
-      .price-left .currency {
-        font-size: 0.5em;
-        vertical-align: super;
-        font-weight: 600;
-      }
-      .price-left .note {
-        font-size: clamp(10px, 1vw, 12px);
-        color: var(--muted);
-        margin-top: 7px;
-        letter-spacing: 0.04em;
-      }
-      .price-right {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 12px;
-        flex-shrink: 0;
-      }
-      .seats-badge {
-        font-family: "DM Mono", monospace;
-        font-size: clamp(8px, 0.95vw, 10px);
-        letter-spacing: 0.17em;
-        color: var(--gold);
-        padding: 8px 16px;
-        border: 1px solid var(--border);
-        background: rgba(201, 168, 76, 0.1);
-        text-transform: uppercase;
-        white-space: nowrap;
-      }
-      .cta-btn {
-        background: var(--gold);
-        color: #000;
-        font-family: "Syne", sans-serif;
-        font-weight: 800;
-        font-size: clamp(10px, 1.3vw, 13.5px);
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        padding: clamp(12px, 1.7vw, 18px) clamp(20px, 2.8vw, 40px);
-        border: none;
-        cursor: pointer;
-        transition:
-          background 0.2s,
-          transform 0.15s;
-        white-space: nowrap;
-      }
-      .cta-btn:hover {
-        background: var(--gold-light);
-        transform: translateY(-1px);
-      }
-      .cta-btn:active {
-        transform: translateY(0);
-      }
-
-      /* ── FORMAT ROW ── */
-      .format-row {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        border-top: 1px solid var(--border);
-      }
-      .format-item {
-        display: flex;
-        align-items: center;
-        gap: clamp(7px, 1.1vw, 12px);
-        padding: clamp(13px, 2vw, 22px) clamp(12px, 2vw, 28px);
-        border-right: 1px solid var(--border);
-      }
-      .format-item:last-child {
-        border-right: none;
-      }
-      .fi-icon {
-        font-size: clamp(15px, 2vw, 20px);
-        opacity: 0.7;
-        flex-shrink: 0;
-      }
-      .fi-label {
-        font-size: clamp(7px, 0.85vw, 10px);
-        font-family: "DM Mono", monospace;
+      .nav-right {
+        font-size: 11px;
+        font-weight: 700;
         letter-spacing: 0.15em;
-        color: var(--muted);
         text-transform: uppercase;
-      }
-      .fi-value {
-        font-size: clamp(10px, 1.2vw, 13px);
-        color: var(--text);
-        font-weight: 500;
-        margin-top: 2px;
+        color: var(--muted);
       }
 
-      /* ── FOOTER ── */
-      .footer {
-        background: rgba(201, 168, 76, 0.03);
-        border-top: 1px solid var(--border);
-        padding: clamp(13px, 1.8vw, 20px) var(--pad-x);
+      /* COUNTDOWN TIMER (reusable) */
+      .countdown-bar {
+        background: rgba(255, 200, 0, 0.06);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 14px 28px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        gap: 18px;
         flex-wrap: wrap;
+      }
+      .countdown-bar .cb-label {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: rgba(255, 200, 0, 0.6);
+        flex-shrink: 0;
+      }
+      .timer-group {
+        display: flex;
         gap: 8px;
       }
-      .footer .brand {
-        font-family: "Syne", sans-serif;
-        font-size: clamp(9px, 1vw, 11px);
-        font-weight: 700;
-        letter-spacing: 0.17em;
-        color: var(--gold-dim);
-        text-transform: uppercase;
+      .timer-unit {
+        text-align: center;
       }
-      .footer .urgent {
-        font-family: "DM Mono", monospace;
-        font-size: clamp(8px, 0.95vw, 10px);
+      .timer-num {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 32px;
         color: var(--gold);
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
+        line-height: 1;
+        display: block;
       }
-      .footer .url {
-        font-family: "DM Mono", monospace;
-        font-size: clamp(9px, 1vw, 11px);
+      .timer-lbl {
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
         color: var(--muted);
-        letter-spacing: 0.08em;
+      }
+      .timer-sep {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 28px;
+        color: rgba(255, 200, 0, 0.3);
+        line-height: 1.1;
       }
 
-      /* ── ANIMATIONS ── */
-      @keyframes fadeUp {
+      /* ════════════════════════════════════════════
+       PAGE 1 — LANDING / SALES PAGE
+    ════════════════════════════════════════════ */
+      #page-landing {
+        animation: fadeIn 0.5s ease;
+      }
+      @keyframes fadeIn {
         from {
           opacity: 0;
           transform: translateY(16px);
@@ -471,317 +332,2028 @@
           transform: translateY(0);
         }
       }
-      .topbar {
-        animation: fadeUp 0.5s ease both 0.05s;
-      }
+
+      /* HERO */
       .hero {
-        animation: fadeUp 0.6s ease both 0.12s;
+        padding: 80px 0 60px;
+        text-align: center;
       }
-      .mid {
-        animation: fadeUp 0.6s ease both 0.2s;
+      .hero-eyebrow {
+        margin-bottom: 24px;
       }
-      .value-section {
-        animation: fadeUp 0.6s ease both 0.27s;
+      .hero h1 {
+        font-size: clamp(72px, 12vw, 140px);
+        line-height: 0.87;
+        margin-bottom: 28px;
       }
-      .format-row {
-        animation: fadeUp 0.6s ease both 0.33s;
+      .hero-sub {
+        font-size: 19px;
+        font-weight: 300;
+        font-style: italic;
+        color: var(--muted);
+        max-width: 620px;
+        margin: 0 auto 36px;
+        line-height: 1.65;
       }
-      .footer {
-        animation: fadeUp 0.6s ease both 0.38s;
+      .hero-tags {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 48px;
+      }
+      .hero-cta {
+        margin-bottom: 18px;
+      }
+      .hero-note {
+        font-size: 12px;
+        color: var(--muted);
+        letter-spacing: 0.04em;
       }
 
-      /* ══════════════════════════
-   RESPONSIVE BREAKPOINTS
-══════════════════════════ */
+      /* PRICE BAND */
+      .price-band {
+        background: var(--bg2);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+        padding: 40px 0;
+        text-align: center;
+        margin: 0 0 80px;
+      }
+      .price-band-inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+      }
+      .price-cross {
+        font-size: 22px;
+        color: rgba(255, 255, 255, 0.2);
+        text-decoration: line-through;
+        font-weight: 300;
+      }
+      .price-arrow {
+        font-size: 20px;
+        color: var(--muted);
+      }
+      .price-main {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 96px;
+        color: var(--gold);
+        line-height: 1;
+      }
+      .price-main-sub {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+      .price-badge {
+        background: rgba(255, 200, 0, 0.1);
+        border: 1px solid rgba(255, 200, 0, 0.3);
+        border-radius: 3px;
+        padding: 12px 24px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--gold);
+      }
 
-      /* Tablet ≤ 768px */
-      @media (max-width: 768px) {
-        .badge-virtual {
+      /* PROBLEM SECTION */
+      .problem {
+        padding: 80px 0;
+      }
+      .problem-intro {
+        font-size: 32px;
+        font-family: "Bebas Neue", sans-serif;
+        line-height: 1.2;
+        max-width: 680px;
+        margin-bottom: 48px;
+      }
+      .truth-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px;
+      }
+      .truth-item {
+        background: var(--bg2);
+        padding: 32px;
+        border: 1px solid var(--border);
+      }
+      .truth-item .ti-icon {
+        font-size: 28px;
+        margin-bottom: 14px;
+      }
+      .truth-item h4 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 22px;
+        margin-bottom: 8px;
+        color: var(--text);
+      }
+      .truth-item p {
+        font-size: 14px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      /* PROGRAM WEEKS */
+      .program {
+        padding: 80px 0;
+      }
+      .weeks {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        margin-top: 48px;
+      }
+      .week {
+        display: flex;
+        align-items: stretch;
+        gap: 0;
+        border: 1px solid var(--border);
+        overflow: hidden;
+        transition: border-color 0.2s;
+      }
+      .week:hover {
+        border-color: rgba(255, 200, 0, 0.4);
+      }
+      .week-num {
+        background: var(--bg2);
+        padding: 28px 28px;
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 48px;
+        color: rgba(255, 200, 0, 0.18);
+        line-height: 1;
+        flex-shrink: 0;
+        width: 96px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-right: 1px solid var(--border);
+      }
+      .week-body {
+        padding: 24px 28px;
+      }
+      .week-body h4 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 26px;
+        margin-bottom: 6px;
+      }
+      .week-body h4 em {
+        color: var(--gold);
+        font-style: normal;
+      }
+      .week-body p {
+        font-size: 14px;
+        color: var(--muted);
+      }
+
+      /* BONUSES */
+      .bonuses {
+        padding: 80px 0;
+      }
+      .bonus-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 2px;
+        margin-top: 40px;
+      }
+      .bonus-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        padding: 32px 28px;
+      }
+      .bonus-icon {
+        font-size: 28px;
+        margin-bottom: 14px;
+      }
+      .bonus-card h4 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 20px;
+        margin-bottom: 6px;
+      }
+      .bonus-card p {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      /* TRANSFORMATION */
+      .transform {
+        padding: 80px 0;
+      }
+      .before-after {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px;
+        margin-top: 48px;
+      }
+      .ba-col {
+        padding: 40px 32px;
+        border: 1px solid var(--border);
+        background: var(--bg2);
+      }
+      .ba-col.after {
+        border-color: rgba(255, 200, 0, 0.3);
+        background: rgba(255, 200, 0, 0.03);
+      }
+      .ba-label {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        color: var(--muted);
+      }
+      .ba-col.after .ba-label {
+        color: var(--gold);
+      }
+      .ba-item {
+        font-size: 16px;
+        color: rgba(255, 255, 255, 0.55);
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .ba-item:last-child {
+        border-bottom: none;
+      }
+      .ba-col.after .ba-item {
+        color: var(--text);
+      }
+      .ba-item::before {
+        content: "— ";
+        color: rgba(255, 255, 255, 0.2);
+      }
+      .ba-col.after .ba-item::before {
+        content: "✓ ";
+        color: var(--gold);
+      }
+
+      /* TESTIMONIALS */
+      .testimonials {
+        padding: 80px 0;
+      }
+      .testi-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 2px;
+        margin-top: 40px;
+      }
+      .testi-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        padding: 32px 28px;
+      }
+      .testi-card .stars {
+        margin-bottom: 14px;
+        display: block;
+      }
+      .testi-card blockquote {
+        font-size: 15px;
+        font-style: italic;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.6;
+        margin-bottom: 16px;
+      }
+      .testi-card cite {
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--gold);
+        font-style: normal;
+      }
+
+      /* VALUE STACK */
+      .value-stack {
+        padding: 80px 0;
+      }
+      .vs-table {
+        margin-top: 40px;
+        border: 1px solid var(--border);
+        overflow: hidden;
+        border-radius: 3px;
+      }
+      .vs-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 28px;
+        border-bottom: 1px solid var(--border);
+      }
+      .vs-row:last-child {
+        border-bottom: none;
+      }
+      .vs-row.total {
+        background: rgba(255, 200, 0, 0.05);
+        border-bottom: none;
+        border-top: 2px solid rgba(255, 200, 0, 0.3);
+      }
+      .vs-item {
+        font-size: 15px;
+        color: var(--text);
+      }
+      .vs-price {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 24px;
+        color: var(--muted);
+      }
+      .vs-row.total .vs-item {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 22px;
+      }
+      .vs-row.total .vs-price {
+        color: var(--gold);
+        font-size: 36px;
+      }
+
+      /* GUARANTEE */
+      .guarantee {
+        padding: 80px 0;
+      }
+      .guarantee-box {
+        background: var(--bg2);
+        border: 1px solid rgba(255, 200, 0, 0.2);
+        border-radius: 3px;
+        padding: 56px 48px;
+        display: flex;
+        gap: 40px;
+        align-items: flex-start;
+      }
+      .guarantee-icon {
+        font-size: 56px;
+        flex-shrink: 0;
+      }
+      .guarantee-box h3 {
+        font-size: 42px;
+        margin-bottom: 14px;
+      }
+      .guarantee-box p {
+        font-size: 15px;
+        color: var(--muted);
+        line-height: 1.7;
+        max-width: 540px;
+      }
+
+      /* WHO IS THIS FOR */
+      .for-section {
+        padding: 80px 0;
+      }
+      .for-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px;
+        margin-top: 40px;
+      }
+      .for-col {
+        padding: 36px 32px;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+      }
+      .for-col.yes {
+        border-color: rgba(255, 200, 0, 0.2);
+      }
+      .for-col h4 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 26px;
+        margin-bottom: 20px;
+      }
+      .for-col.no h4 {
+        color: rgba(255, 255, 255, 0.3);
+      }
+      .for-col.yes h4 {
+        color: var(--gold);
+      }
+      .for-item {
+        font-size: 15px;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .for-item:last-child {
+        border-bottom: none;
+      }
+      .for-col.no .for-item::before {
+        content: "✕ ";
+        color: rgba(255, 255, 255, 0.2);
+      }
+      .for-col.yes .for-item {
+        color: var(--text);
+      }
+      .for-col.yes .for-item::before {
+        content: "✓ ";
+        color: var(--gold);
+      }
+
+      /* FINAL CTA SECTION */
+      .final-cta {
+        padding: 100px 0;
+        text-align: center;
+      }
+      .final-cta h2 {
+        font-size: clamp(48px, 8vw, 96px);
+        line-height: 0.9;
+        margin-bottom: 28px;
+      }
+      .final-cta p {
+        font-size: 18px;
+        font-style: italic;
+        color: var(--muted);
+        max-width: 560px;
+        margin: 0 auto 48px;
+      }
+
+      /* FOOTER */
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 28px 0;
+        text-align: center;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.12);
+        position: relative;
+        z-index: 2;
+      }
+
+      /* ════════════════════════════════════════════
+       PAGE 2 — COUNTDOWN
+    ════════════════════════════════════════════ */
+      #page-countdown {
+        animation: fadeIn 0.5s ease;
+      }
+      .countdown-hero {
+        padding: 140px 0 80px;
+        text-align: center;
+      }
+      .countdown-hero h1 {
+        font-size: clamp(64px, 10vw, 120px);
+        line-height: 0.88;
+        margin-bottom: 32px;
+      }
+      .countdown-hero .sub {
+        font-size: 18px;
+        font-style: italic;
+        font-weight: 300;
+        color: var(--muted);
+        max-width: 560px;
+        margin: 0 auto 56px;
+      }
+
+      .big-timer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+        margin: 0 auto 56px;
+        flex-wrap: wrap;
+      }
+      .big-unit {
+        text-align: center;
+      }
+      .big-num {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(80px, 14vw, 140px);
+        color: var(--gold);
+        line-height: 0.9;
+        display: block;
+        text-shadow: 0 0 60px rgba(255, 200, 0, 0.3);
+      }
+      .big-lbl {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-top: 10px;
+      }
+      .big-sep {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 80px;
+        color: rgba(255, 200, 0, 0.2);
+        line-height: 0.9;
+        margin-top: -10px;
+      }
+
+      .seats-bar {
+        max-width: 500px;
+        margin: 0 auto 56px;
+      }
+      .seats-bar-label {
+        display: flex;
+        justify-content: space-between;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 10px;
+      }
+      .seats-bar-track {
+        height: 6px;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 3px;
+        overflow: hidden;
+      }
+      .seats-bar-fill {
+        height: 100%;
+        width: 74%;
+        border-radius: 3px;
+        background: linear-gradient(90deg, var(--gold), var(--orange));
+        animation: fillPulse 2s ease-in-out infinite alternate;
+      }
+      @keyframes fillPulse {
+        from {
+          opacity: 0.8;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .urgency-points {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 2px;
+        margin-top: 60px;
+      }
+      .urgency-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        padding: 32px 28px;
+        text-align: left;
+      }
+      .urgency-card .uc-num {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 48px;
+        color: rgba(255, 200, 0, 0.2);
+        line-height: 1;
+        margin-bottom: 8px;
+      }
+      .urgency-card h4 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 22px;
+        margin-bottom: 8px;
+      }
+      .urgency-card h4 em {
+        color: var(--gold);
+        font-style: normal;
+      }
+      .urgency-card p {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      /* ════════════════════════════════════════════
+       PAGE 3 — CHECKOUT
+    ════════════════════════════════════════════ */
+      #page-checkout {
+        animation: fadeIn 0.5s ease;
+      }
+      .checkout-layout {
+        display: grid;
+        grid-template-columns: 1fr 420px;
+        gap: 40px;
+        padding: 80px 0 100px;
+        align-items: start;
+      }
+
+      /* ORDER SUMMARY */
+      .order-summary h2 {
+        font-size: 52px;
+        margin-bottom: 8px;
+      }
+      .order-summary .os-sub {
+        font-size: 16px;
+        font-weight: 300;
+        font-style: italic;
+        color: var(--muted);
+        margin-bottom: 40px;
+      }
+      .order-include {
+        margin-bottom: 40px;
+      }
+      .order-include h4 {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 18px;
+      }
+      .oi-item {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .oi-item:last-child {
+        border-bottom: none;
+      }
+      .oi-check {
+        color: var(--gold);
+        font-size: 15px;
+        flex-shrink: 0;
+      }
+      .oi-text {
+        font-size: 15px;
+        color: var(--text);
+      }
+
+      .order-price-box {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        padding: 32px;
+        border-radius: 3px;
+      }
+      .opb-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 14px;
+      }
+      .opb-row:last-child {
+        border-bottom: none;
+      }
+      .opb-row.total {
+        padding-top: 20px;
+        margin-top: 6px;
+        border-bottom: none;
+      }
+      .opb-row.total .opb-label {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 20px;
+      }
+      .opb-row.total .opb-val {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 44px;
+        color: var(--gold);
+      }
+      .opb-label {
+        color: var(--muted);
+      }
+      .opb-val {
+        color: var(--text);
+        font-weight: 600;
+      }
+      .opb-val.strike {
+        text-decoration: line-through;
+        color: rgba(255, 255, 255, 0.18);
+      }
+
+      /* CHECKOUT FORM */
+      .checkout-form-wrap {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 3px;
+        padding: 40px 36px;
+        position: sticky;
+        top: 32px;
+      }
+      .checkout-form-wrap h3 {
+        font-size: 32px;
+        margin-bottom: 6px;
+      }
+      .checkout-form-wrap .cf-sub {
+        font-size: 12px;
+        color: var(--muted);
+        margin-bottom: 32px;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      .form-group label {
+        display: block;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.4);
+        margin-bottom: 8px;
+      }
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+        padding: 14px 16px;
+        font-size: 15px;
+        color: var(--text);
+        font-family: "DM Sans", sans-serif;
+        transition: border-color 0.15s;
+        outline: none;
+      }
+      .form-group input:focus,
+      .form-group select:focus {
+        border-color: rgba(255, 200, 0, 0.4);
+      }
+      .form-group select option {
+        background: #0f0e09;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .secure-badges {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 16px;
+        flex-wrap: wrap;
+      }
+      .sb-item {
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.22);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .sb-item::before {
+        content: "🔒";
+        font-size: 11px;
+      }
+
+      .paystack-btn {
+        width: 100%;
+        background: var(--gold);
+        color: #060504;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        padding: 18px;
+        border-radius: 3px;
+        cursor: pointer;
+        border: none;
+        font-family: "DM Sans", sans-serif;
+        box-shadow: 0 0 40px rgba(255, 200, 0, 0.2);
+        transition:
+          transform 0.15s,
+          box-shadow 0.15s;
+        margin-top: 6px;
+      }
+      .paystack-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 50px rgba(255, 200, 0, 0.4);
+      }
+
+      /* ════════════════════════════════════════════
+       PAGE 4 — THANK YOU
+    ════════════════════════════════════════════ */
+      #page-thankyou {
+        animation: fadeIn 0.6s ease;
+      }
+      .ty-hero {
+        padding: 120px 0 80px;
+        text-align: center;
+      }
+      .ty-check {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: rgba(255, 200, 0, 0.1);
+        border: 2px solid rgba(255, 200, 0, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        margin: 0 auto 36px;
+        box-shadow: 0 0 60px rgba(255, 200, 0, 0.15);
+        animation: checkPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s
+          both;
+      }
+      @keyframes checkPop {
+        from {
+          transform: scale(0);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      .ty-hero h1 {
+        font-size: clamp(48px, 9vw, 100px);
+        line-height: 0.88;
+        margin-bottom: 24px;
+      }
+      .ty-hero p {
+        font-size: 18px;
+        font-style: italic;
+        font-weight: 300;
+        color: var(--muted);
+        max-width: 520px;
+        margin: 0 auto 56px;
+      }
+
+      .ty-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 2px;
+        margin-top: 40px;
+      }
+      .ty-step {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        padding: 36px 28px;
+        text-align: left;
+      }
+      .ty-step .step-num {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 56px;
+        color: rgba(255, 200, 0, 0.15);
+        line-height: 1;
+        margin-bottom: 12px;
+      }
+      .ty-step h4 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 22px;
+        margin-bottom: 8px;
+      }
+      .ty-step h4 em {
+        color: var(--gold);
+        font-style: normal;
+      }
+      .ty-step p {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .ty-share {
+        padding: 80px 0;
+        text-align: center;
+      }
+      .ty-share h3 {
+        font-size: 42px;
+        margin-bottom: 16px;
+      }
+      .ty-share p {
+        font-size: 15px;
+        color: var(--muted);
+        max-width: 480px;
+        margin: 0 auto 32px;
+      }
+      .share-btns {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      /* ─── RESPONSIVE ─── */
+      @media (max-width: 720px) {
+        .truth-grid,
+        .before-after,
+        .for-grid {
+          grid-template-columns: 1fr;
+        }
+        .checkout-layout {
+          grid-template-columns: 1fr;
+        }
+        .checkout-form-wrap {
+          position: static;
+        }
+        .guarantee-box {
+          flex-direction: column;
+          gap: 20px;
+          padding: 36px 28px;
+        }
+        .big-sep {
           display: none;
-        }
-
-        .mid {
-          grid-template-columns: 1fr;
-          gap: 0;
-        }
-        .col-left {
-          padding-right: 0;
-          padding-bottom: clamp(20px, 3vw, 28px);
-          border-right: none;
-          border-bottom: 1px solid var(--border);
-          margin-bottom: clamp(20px, 3vw, 28px);
-        }
-        .col-right {
-          padding-left: 0;
-        }
-
-        .format-row {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .format-item:nth-child(2) {
-          border-right: none;
-        }
-        .format-item:nth-child(3) {
-          border-top: 1px solid var(--border);
-        }
-        .format-item:nth-child(4) {
-          border-top: 1px solid var(--border);
-          border-right: none;
-        }
-
-        .price-block {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-        .price-right {
-          align-items: stretch;
-          width: 100%;
-        }
-        .cta-btn {
-          text-align: center;
-          width: 100%;
-        }
-      }
-
-      /* Mobile ≤ 480px */
-      @media (max-width: 480px) {
-        body {
-          padding: 12px 8px;
-        }
-
-        .headline {
-          word-break: break-word;
-        }
-
-        .footer {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 5px;
-        }
-
-        .format-row {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-
-      /* Very small ≤ 360px */
-      @media (max-width: 360px) {
-        .format-row {
-          grid-template-columns: 1fr;
-        }
-        .format-item {
-          border-right: none !important;
-          border-top: 1px solid var(--border);
-        }
-        .format-item:first-child {
-          border-top: none;
         }
       }
     </style>
   </head>
   <body>
-    <div class="flyer">
-      <div class="content">
-        <div class="geo" aria-hidden="true">
-          <svg
-            viewBox="0 0 320 320"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle
-              cx="290"
-              cy="30"
-              r="200"
-              stroke="#C9A84C"
-              stroke-width="0.6"
-            />
-            <circle
-              cx="290"
-              cy="30"
-              r="145"
-              stroke="#C9A84C"
-              stroke-width="0.6"
-            />
-            <circle
-              cx="290"
-              cy="30"
-              r="90"
-              stroke="#C9A84C"
-              stroke-width="0.6"
-            />
-            <line
-              x1="80"
-              y1="0"
-              x2="320"
-              y2="240"
-              stroke="#C9A84C"
-              stroke-width="0.5"
-            />
-            <line
-              x1="180"
-              y1="0"
-              x2="320"
-              y2="160"
-              stroke="#C9A84C"
-              stroke-width="0.5"
-            />
-          </svg>
-        </div>
+    <!-- SHARED BACKGROUNDS -->
+    <div class="grid-bg"></div>
+    <div class="glow-tr"></div>
+    <div class="glow-bl"></div>
+    <div class="top-bar"></div>
 
-        <!-- TOPBAR -->
-        <div class="topbar">
-          <div class="logo-area">
-            <div class="logo-mark">M</div>
-            <div class="logo-text">Mentel Ltd.</div>
-          </div>
-          <div class="badge-virtual">Virtual · Live · Transformational</div>
+    <!-- ════════════════════════════════════════════
+       PAGE 1 — LANDING / SALES PAGE
+  ════════════════════════════════════════════ -->
+    <div class="page active" id="page-landing">
+      <nav>
+        <div class="wrap-wide nav-inner">
+          <div class="logo">Mentel <span>Ltd</span></div>
+          <div class="nav-right">mentelltd.com · Virtual · 2026</div>
         </div>
+      </nav>
 
-        <!-- HERO -->
-        <div class="hero">
-          <div class="eyebrow">3-Day Virtual Summit · 2026</div>
-          <div class="headline">
-            The <span class="accent-word">High-Income</span><br />
-            Career Accelerator
+      <!-- URGENCY STRIP -->
+      <div
+        style="
+          background: rgba(255, 200, 0, 0.07);
+          border-bottom: 1px solid var(--border);
+          padding: 12px 24px;
+          text-align: center;
+          position: relative;
+          z-index: 2;
+        "
+      >
+        <span
+          style="
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+          "
+        >
+          ⚡ Early Access — First 2,000 Seats Only · Price Increases After
+          Cohort Fills
+        </span>
+      </div>
+
+      <!-- HERO -->
+      <section class="hero">
+        <div class="wrap">
+          <div class="hero-eyebrow">
+            <span class="eyebrow"
+              >Mentel Ltd · 3-Day Virtual Summit · 2026</span
+            >
           </div>
-          <div class="headline-year">2026</div>
-          <p class="tagline">
+          <h1>
+            HIGH-INCOME<br />
+            <span class="gold">CAREER</span><br />
+            ACCELERATOR
+          </h1>
+          <p class="hero-sub">
             "How To Increase Your Income, Position Yourself For Global
-            Opportunities &amp; Become Highly Valuable, Even In This Economy"
+            Opportunities &amp; Become Highly Valuable — Even In This Economy"
           </p>
-        </div>
-
-        <div class="divider"></div>
-
-        <!-- WHO / WHAT -->
-        <div class="mid">
-          <div class="col-left">
-            <div class="section-label">Who This Is For</div>
-            <ul class="check-list">
-              <li>Professionals earning under ₦300k/month</li>
-              <li>Graduates who need a clear direction</li>
-              <li>Mid-level workers seeking global leverage</li>
-              <li>Founders scaling income to the next level</li>
-            </ul>
+          <div class="hero-tags">
+            <span class="tag gold">Early Access ₦12,000</span>
+            <span class="tag">First 2,000 Seats</span>
+            <span class="tag">Live · Virtual · 2026</span>
+            <span class="tag">6-Week Framework</span>
           </div>
-          <div class="col-right">
-            <div class="section-label">What You'll Learn</div>
-            <ul class="arrow-list">
-              <li>Income Positioning Formula</li>
-              <li>Acquire High-Value Skills Fast</li>
-              <li>LinkedIn &amp; Global Opportunity Access</li>
-              <li>Digital Income Blueprint</li>
-            </ul>
+          <div class="hero-cta">
+            <button class="btn-primary" onclick="goTo('countdown')">
+              ⚡ &nbsp;Secure My Seat Now
+            </button>
+          </div>
+          <div class="hero-note">
+            Instant confirmation &nbsp;·&nbsp; Limited early access seats
+            &nbsp;·&nbsp; Zero risk guarantee
           </div>
         </div>
+      </section>
 
-        <div class="divider"></div>
-
-        <!-- VALUE STACK + PRICE -->
-        <div class="value-section">
-          <table
-            class="value-table"
-            role="table"
-            aria-label="Program value breakdown"
-          >
-            <thead>
-              <tr>
-                <th scope="col">What's Included</th>
-                <th scope="col">Individual Value</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>6-Week Strategy Framework</td>
-                <td>₦80,000</td>
-              </tr>
-              <tr>
-                <td>Templates &amp; Playbooks</td>
-                <td>₦50,000</td>
-              </tr>
-              <tr>
-                <td>Live Mentorship Access</td>
-                <td>₦40,000</td>
-              </tr>
-              <tr>
-                <td>Private Career Network</td>
-                <td>₦30,000</td>
-              </tr>
-              <tr class="total">
-                <td>Total Program Value</td>
-                <td>₦200,000</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div class="price-block">
-            <div class="price-left">
-              <div class="original">Full Value: ₦200,000</div>
-              <div class="main-price">
-                <span class="currency">₦</span>12,000
-              </div>
-              <div class="note">
-                Founders Launch Access · First 2,000 Seats Only
-              </div>
+      <!-- PRICE BAND -->
+      <div class="price-band" style="position: relative; z-index: 2">
+        <div class="price-band-inner">
+          <div>
+            <div
+              style="
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: var(--muted);
+                margin-bottom: 8px;
+              "
+            >
+              Normal Price
             </div>
-            <!-- <div class="price-right">
-              <div class="seats-badge">⚡ Early Access Closes Soon</div>
-              <button class="cta-btn">
-                <a href="https://paystack.shop/pay/mentel" target="_blank"
-                  >Your Seat Now →</a
-                >
-              </button>
-            </div>
-          </div> -->
-          <div class="price-right">
-            <div class="seats-badge">⚡ Early Access Closes Soon</div>
-                <a href="https://paystack.shop/pay/mentel" target="_blank" class="cta-btn">
-                     Secure Your Seat Now →
-            </a>
-        </div>
-        </div>
-
-        <!-- FORMAT ROW -->
-        <div class="format-row">
-          <div class="format-item">
-            <span class="fi-icon">🖥️</span>
-            <div>
-              <div class="fi-label">Format</div>
-              <div class="fi-value">Virtual Summit</div>
+            <div class="price-cross">₦200,000</div>
+          </div>
+          <div class="price-arrow">→</div>
+          <div>
+            <div class="price-main">₦12,000</div>
+            <div class="price-main-sub">
+              Founders Launch · One-Time · All Inclusive
             </div>
           </div>
-          <div class="format-item">
-            <span class="fi-icon">📅</span>
-            <div>
-              <div class="fi-label">Duration</div>
-              <div class="fi-value">3 Days · Live</div>
-            </div>
-          </div>
-          <div class="format-item">
-            <span class="fi-icon">🎯</span>
-            <div>
-              <div class="fi-label">Seats</div>
-              <div class="fi-value">First 2,000 Only</div>
-            </div>
-          </div>
-          <div class="format-item">
-            <span class="fi-icon">💰</span>
-            <div>
-              <div class="fi-label">Early Access</div>
-              <div class="fi-value">₦12,000</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- FOOTER -->
-        <div class="footer">
-          <div class="brand">Mentel Ltd. · Q1 2026</div>
-          <div class="urgent">
-            🔥 Limited Seats · Register Before Doors Close
-          </div>
-          <div class="url">mentelltd.com</div>
+          <div class="price-badge">94% Off · This Cohort Only</div>
         </div>
       </div>
+
+      <!-- PROBLEM -->
+      <section class="problem">
+        <div class="wrap">
+          <div class="section-label">The Hard Truth Nobody Tells You</div>
+          <div class="problem-intro">
+            You're not underpaid because<br />you lack skills.<br />
+            <span class="gold">You're underpaid because of positioning.</span>
+          </div>
+          <p
+            style="
+              font-size: 16px;
+              color: var(--muted);
+              max-width: 600px;
+              margin-bottom: 48px;
+              font-style: italic;
+            "
+          >
+            Someone with your exact skillset is earning in dollars right now.
+            The difference isn't intelligence. It's how they're packaged and
+            where they're visible.
+          </p>
+          <div class="truth-grid">
+            <div class="truth-item">
+              <div class="ti-icon">👤</div>
+              <h4>Your LinkedIn Repels Recruiters</h4>
+              <p>
+                Your profile doesn't speak the language international hiring
+                managers are scanning for. You're invisible to the people who
+                could change your income.
+              </p>
+            </div>
+            <div class="truth-item">
+              <div class="ti-icon">📄</div>
+              <h4>Your CV Isn't Built For Global Standards</h4>
+              <p>
+                What works locally won't open doors globally. Without the right
+                format and framing, your experience gets skipped — even when
+                it's excellent.
+              </p>
+            </div>
+            <div class="truth-item">
+              <div class="ti-icon">🎯</div>
+              <h4>You Apply Randomly, Not Strategically</h4>
+              <p>
+                Sending applications everywhere and hearing nothing back. No
+                system. No targeting. Just hope — which isn't a strategy.
+              </p>
+            </div>
+            <div class="truth-item">
+              <div class="ti-icon">🌍</div>
+              <h4>You're Competing Locally, Not Globally</h4>
+              <p>
+                The local market caps your ceiling. Global markets multiply it.
+                But no one ever taught you how to make that shift. Until now.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider" style="position: relative; z-index: 2"></div>
+
+      <!-- PROGRAM WEEKS -->
+      <section class="program">
+        <div class="wrap">
+          <div class="section-label">The 6-Week Framework</div>
+          <h2
+            style="
+              font-size: clamp(48px, 8vw, 88px);
+              line-height: 0.9;
+              margin-bottom: 16px;
+            "
+          >
+            A Structured<br /><span class="gold">System.</span><br />Not
+            Motivation.
+          </h2>
+          <p
+            style="
+              font-size: 16px;
+              color: var(--muted);
+              max-width: 540px;
+              margin-bottom: 8px;
+            "
+          >
+            Six focused weeks. Each one builds on the last. Real deliverables at
+            every stage.
+          </p>
+          <div class="weeks">
+            <div class="week">
+              <div class="week-num">01</div>
+              <div class="week-body">
+                <h4><em>Income Repositioning</em></h4>
+                <p>
+                  Turn your current experience into a global-ready personal
+                  brand. Define your positioning statement, identify your target
+                  market, and reframe your story for international audiences.
+                </p>
+              </div>
+            </div>
+            <div class="week">
+              <div class="week-num">02</div>
+              <div class="week-body">
+                <h4>LinkedIn <em>Optimization System</em></h4>
+                <p>
+                  Make recruiters find you instead of you chasing jobs. Full
+                  profile overhaul, keyword strategy, and content frameworks
+                  that attract the right opportunities.
+                </p>
+              </div>
+            </div>
+            <div class="week">
+              <div class="week-num">03</div>
+              <div class="week-body">
+                <h4>CV &amp; Portfolio <em>Upgrade</em></h4>
+                <p>
+                  Plug-and-play templates that meet international standards.
+                  Tailored for different global markets — remote, diaspora, and
+                  in-country roles.
+                </p>
+              </div>
+            </div>
+            <div class="week">
+              <div class="week-num">04</div>
+              <div class="week-body">
+                <h4>Global <em>Job Strategy</em></h4>
+                <p>
+                  Where to apply. How to apply. What actually works in 2026.
+                  Targeted platforms, application scripts, and tracking systems
+                  that eliminate wasted effort.
+                </p>
+              </div>
+            </div>
+            <div class="week">
+              <div class="week-num">05</div>
+              <div class="week-body">
+                <h4>Interview <em>Mastery</em></h4>
+                <p>
+                  How to stand out, answer powerfully, and increase offer rates.
+                  Frameworks for common questions, live practice methodology,
+                  and confidence-building techniques.
+                </p>
+              </div>
+            </div>
+            <div class="week">
+              <div class="week-num">06</div>
+              <div class="week-body">
+                <h4>Salary <em>Negotiation</em></h4>
+                <p>
+                  Stop accepting the first number. Scripts, timing, and
+                  psychology for negotiating offers — whether remote dollar
+                  salaries or local packages.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider" style="position: relative; z-index: 2"></div>
+
+      <!-- BONUSES -->
+      <section class="bonuses">
+        <div class="wrap">
+          <div class="section-label">Everything Included</div>
+          <h2
+            style="
+              font-size: clamp(42px, 7vw, 80px);
+              line-height: 0.9;
+              margin-bottom: 12px;
+            "
+          >
+            Plus You Also<br /><span class="gold">Get:</span>
+          </h2>
+          <div class="bonus-grid">
+            <div class="bonus-card">
+              <div class="bonus-icon">🎙️</div>
+              <h4>3-Day Live Virtual Intensive</h4>
+              <p>
+                Concentrated live sessions designed to accelerate your progress
+                in real time.
+              </p>
+            </div>
+            <div class="bonus-card">
+              <div class="bonus-icon">👥</div>
+              <h4>Live Mentorship &amp; Q&amp;A</h4>
+              <p>
+                Direct access to instructors. Ask questions, get feedback,
+                unblock yourself.
+              </p>
+            </div>
+            <div class="bonus-card">
+              <div class="bonus-icon">🔗</div>
+              <h4>Private Career Network</h4>
+              <p>
+                A peer community of professionals on the same trajectory.
+                Accountability + connections.
+              </p>
+            </div>
+            <div class="bonus-card">
+              <div class="bonus-icon">📋</div>
+              <h4>Strategy Templates &amp; Scripts</h4>
+              <p>
+                Ready-to-use application templates, negotiation scripts, and
+                outreach messages.
+              </p>
+            </div>
+            <div class="bonus-card">
+              <div class="bonus-icon">♾️</div>
+              <h4>Lifetime Access to Recordings</h4>
+              <p>
+                Miss nothing. Rewatch any session. Revisit frameworks when you
+                need them.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider" style="position: relative; z-index: 2"></div>
+
+      <!-- TRANSFORMATION -->
+      <section class="transform">
+        <div class="wrap">
+          <div class="section-label">The Shift</div>
+          <h2
+            style="
+              font-size: clamp(42px, 7vw, 80px);
+              line-height: 0.9;
+              margin-bottom: 12px;
+            "
+          >
+            Imagine 6 Months<br /><span class="gold">From Now</span>
+          </h2>
+          <div class="before-after">
+            <div class="ba-col">
+              <div class="ba-label">Before The Accelerator</div>
+              <div class="ba-item">Earning ₦150k–₦300k/month</div>
+              <div class="ba-item">Invisible to global recruiters</div>
+              <div class="ba-item">Applying randomly, no response</div>
+              <div class="ba-item">Competing locally, capped ceiling</div>
+              <div class="ba-item">"I'm still trying to figure it out"</div>
+              <div class="ba-item">Worried about exchange rates</div>
+            </div>
+            <div class="ba-col after">
+              <div class="ba-label">After The Accelerator</div>
+              <div class="ba-item">Earning in dollars, globally positioned</div>
+              <div class="ba-item">Recruiters reaching out to you</div>
+              <div class="ba-item">Strategic applications, multiple offers</div>
+              <div class="ba-item">Access to global opportunities</div>
+              <div class="ba-item">"I just got paid in dollars"</div>
+              <div class="ba-item">Benefiting from exchange rates</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section class="testimonials">
+        <div class="wrap">
+          <div class="section-label">Real Transformations</div>
+          <h2
+            style="
+              font-size: clamp(42px, 7vw, 80px);
+              line-height: 0.9;
+              margin-bottom: 12px;
+            "
+          >
+            This Works<br /><span class="gold">When You Implement.</span>
+          </h2>
+          <div class="testi-grid">
+            <div class="testi-card">
+              <span class="stars">★★★★★</span>
+              <blockquote>
+                "Before: ₦180k/month. After: $2,500 remote role in just 4
+                months. I had the skills all along — I just needed the right
+                positioning system."
+              </blockquote>
+              <cite>— Daniel A., Product Designer</cite>
+            </div>
+            <div class="testi-card">
+              <span class="stars">★★★★★</span>
+              <blockquote>
+                "I repositioned my CV and LinkedIn using the exact framework. 3
+                interviews in 2 weeks after months of silence. The difference
+                was night and day."
+              </blockquote>
+              <cite>— Chioma O., Data Analyst</cite>
+            </div>
+            <div class="testi-card">
+              <span class="stars">★★★★★</span>
+              <blockquote>
+                "Went from applying blindly to applying strategically. My
+                response rate jumped immediately and I'm now in active
+                conversations with 2 companies."
+              </blockquote>
+              <cite>— Emeka T., Project Manager</cite>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider" style="position: relative; z-index: 2"></div>
+
+      <!-- VALUE STACK -->
+      <section class="value-stack">
+        <div class="wrap">
+          <div class="section-label">The Investment</div>
+          <h2
+            style="
+              font-size: clamp(42px, 7vw, 80px);
+              line-height: 0.9;
+              margin-bottom: 12px;
+            "
+          >
+            What You Get<br /><span class="gold">vs What You Pay</span>
+          </h2>
+          <div class="vs-table">
+            <div class="vs-row">
+              <div class="vs-item">Live Mentorship (3 sessions)</div>
+              <div class="vs-price">₦80,000</div>
+            </div>
+            <div class="vs-row">
+              <div class="vs-item">LinkedIn Optimization System</div>
+              <div class="vs-price">₦40,000</div>
+            </div>
+            <div class="vs-row">
+              <div class="vs-item">CV &amp; Portfolio Templates</div>
+              <div class="vs-price">₦25,000</div>
+            </div>
+            <div class="vs-row">
+              <div class="vs-item">Global Strategy Training</div>
+              <div class="vs-price">₦55,000</div>
+            </div>
+            <div class="vs-row total">
+              <div class="vs-item">Total Value</div>
+              <div class="vs-price" style="color: var(--gold)">₦12,000</div>
+            </div>
+          </div>
+          <p
+            style="
+              font-size: 13px;
+              color: var(--muted);
+              margin-top: 18px;
+              font-style: italic;
+            "
+          >
+            Why so low? This is our first public cohort. We're building case
+            studies and long-term ambassadors. Future cohorts will not get this
+            price.
+          </p>
+        </div>
+      </section>
+
+      <!-- GUARANTEE -->
+      <section class="guarantee">
+        <div class="wrap">
+          <div class="guarantee-box">
+            <div class="guarantee-icon">🛡️</div>
+            <div>
+              <div class="section-label">Zero-Risk Commitment</div>
+              <h3>Our 7-Day<br /><span class="gold">Guarantee</span></h3>
+              <p>
+                If you attend the program and genuinely implement the framework
+                but feel it delivered no value — reach out within 7 days. We
+                stand behind quality. You are not risking ₦12,000. You're
+                investing in your positioning.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider" style="position: relative; z-index: 2"></div>
+
+      <!-- WHO IS THIS FOR -->
+      <section class="for-section">
+        <div class="wrap">
+          <div class="section-label">Be Honest With Yourself</div>
+          <h2
+            style="
+              font-size: clamp(42px, 7vw, 80px);
+              line-height: 0.9;
+              margin-bottom: 12px;
+            "
+          >
+            Is This<br /><span class="gold">For You?</span>
+          </h2>
+          <div class="for-grid">
+            <div class="for-col no">
+              <h4>Not For You If:</h4>
+              <div class="for-item">You're looking for shortcuts</div>
+              <div class="for-item">You won't implement the work</div>
+              <div class="for-item">You just want motivation</div>
+              <div class="for-item">You expect overnight results</div>
+            </div>
+            <div class="for-col yes">
+              <h4>This Is For You If:</h4>
+              <div class="for-item">You're ready to level up your career</div>
+              <div class="for-item">
+                You're tired of earning below your potential
+              </div>
+              <div class="for-item">You want a proven system, not hype</div>
+              <div class="for-item">You're an action taker</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="final-cta">
+        <div class="wrap">
+          <div class="section-label" style="text-align: center; display: block">
+            One Year From Now
+          </div>
+          <h2>
+            Will You Still<br />Be<br /><span class="gold">"Trying"?</span>
+          </h2>
+          <p>
+            ₦12,000 is less than what most people spend on a weekend. The right
+            positioning can change your income trajectory permanently.
+          </p>
+          <button
+            class="btn-primary"
+            onclick="goTo('countdown')"
+            style="font-size: 15px; padding: 22px 56px"
+          >
+            ⚡ &nbsp;Yes — Secure My Seat
+          </button>
+          <div style="margin-top: 16px; font-size: 12px; color: var(--muted)">
+            Early access seats are limited · Price increases after cohort fills
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="wrap">
+          © 2026 Mentel Ltd · mentelltd.com · All Rights Reserved
+        </div>
+      </footer>
     </div>
+
+    <!-- ════════════════════════════════════════════
+       PAGE 2 — COUNTDOWN / URGENCY
+  ════════════════════════════════════════════ -->
+    <div class="page" id="page-countdown">
+      <nav>
+        <div class="wrap-wide nav-inner">
+          <div class="logo">Mentel <span>Ltd</span></div>
+          <button
+            class="btn-ghost"
+            onclick="goTo('landing')"
+            style="font-size: 10px; padding: 10px 20px"
+          >
+            ← Back
+          </button>
+        </div>
+      </nav>
+
+      <section class="countdown-hero">
+        <div class="wrap" style="text-align: center">
+          <div style="margin-bottom: 24px">
+            <span class="eyebrow">Early Access Closing Soon</span>
+          </div>
+          <h1>
+            The Price<br />Goes Up <span class="gold">When</span><br />This
+            Ends.
+          </h1>
+          <p class="sub">
+            This is your window. Once early access closes, the Founders Launch
+            Price of ₦12,000 is gone. Future cohorts will pay the full price.
+          </p>
+
+          <!-- BIG TIMER -->
+          <div class="big-timer" id="bigTimer">
+            <div class="big-unit">
+              <span class="big-num" id="bt-days">02</span>
+              <div class="big-lbl">Days</div>
+            </div>
+            <div class="big-sep">:</div>
+            <div class="big-unit">
+              <span class="big-num" id="bt-hours">17</span>
+              <div class="big-lbl">Hours</div>
+            </div>
+            <div class="big-sep">:</div>
+            <div class="big-unit">
+              <span class="big-num" id="bt-mins">44</span>
+              <div class="big-lbl">Minutes</div>
+            </div>
+            <div class="big-sep">:</div>
+            <div class="big-unit">
+              <span class="big-num" id="bt-secs">08</span>
+              <div class="big-lbl">Seconds</div>
+            </div>
+          </div>
+
+          <!-- SEATS BAR -->
+          <div class="seats-bar">
+            <div class="seats-bar-label">
+              <span>Seats Claimed</span>
+              <span style="color: var(--gold)">1,482 / 2,000</span>
+            </div>
+            <div class="seats-bar-track">
+              <div class="seats-bar-fill"></div>
+            </div>
+          </div>
+
+          <button
+            class="btn-primary"
+            onclick="goTo('checkout')"
+            style="font-size: 15px; padding: 22px 56px; margin-bottom: 16px"
+          >
+            ⚡ &nbsp;Claim My Seat — ₦12,000
+          </button>
+          <div style="font-size: 12px; color: var(--muted)">
+            Only 518 seats remaining at this price
+          </div>
+        </div>
+
+        <div class="wrap" style="margin-top: 80px">
+          <div class="urgency-points">
+            <div class="urgency-card">
+              <div class="uc-num">01</div>
+              <h4>Price <em>Increases</em> After Cohort</h4>
+              <p>
+                This is the only cohort getting Founders Launch pricing. The
+                moment seats fill, the price goes up — permanently.
+              </p>
+            </div>
+            <div class="urgency-card">
+              <div class="uc-num">02</div>
+              <h4>Limited to <em>2,000 Seats</em></h4>
+              <p>
+                To protect the mentorship quality and community experience, this
+                cohort is strictly capped. No exceptions.
+              </p>
+            </div>
+            <div class="urgency-card">
+              <div class="uc-num">03</div>
+              <h4>Live Access <em>Included</em></h4>
+              <p>
+                Early access members get priority placement for the live virtual
+                intensive sessions — which cannot be replicated in recordings.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="wrap">© 2026 Mentel Ltd · mentelltd.com</div>
+      </footer>
+    </div>
+
+    <!-- ════════════════════════════════════════════
+       PAGE 3 — CHECKOUT
+  ════════════════════════════════════════════ -->
+    <div class="page" id="page-checkout">
+      <nav>
+        <div class="wrap-wide nav-inner">
+          <div class="logo">Mentel <span>Ltd</span></div>
+          <button
+            class="btn-ghost"
+            onclick="goTo('countdown')"
+            style="font-size: 10px; padding: 10px 20px"
+          >
+            ← Back
+          </button>
+        </div>
+      </nav>
+
+      <!-- MINI TIMER -->
+      <div
+        style="
+          background: rgba(255, 200, 0, 0.06);
+          border-bottom: 1px solid var(--border);
+          padding: 12px 24px;
+          text-align: center;
+          position: relative;
+          z-index: 2;
+        "
+      >
+        <span
+          style="
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+          "
+        >
+          ⏳ Early Access Closes In: &nbsp;
+          <span id="mini-timer">--:--:--</span>
+          &nbsp;· &nbsp;518 Seats Remaining
+        </span>
+      </div>
+
+      <div class="wrap-wide">
+        <div class="checkout-layout">
+          <!-- LEFT: ORDER SUMMARY -->
+          <div class="order-summary">
+            <div class="section-label">Complete Your Registration</div>
+            <h2>Secure Your<br /><span class="gold">Seat.</span></h2>
+            <p class="os-sub">
+              You're one step away from your positioning shift.
+            </p>
+
+            <div class="order-include">
+              <h4>What's Included:</h4>
+              <div class="oi-item">
+                <div class="oi-check">✓</div>
+                <div class="oi-text">6-Week High-Income Career Framework</div>
+              </div>
+              <div class="oi-item">
+                <div class="oi-check">✓</div>
+                <div class="oi-text">3-Day Live Virtual Intensive</div>
+              </div>
+              <div class="oi-item">
+                <div class="oi-check">✓</div>
+                <div class="oi-text">
+                  Live Mentorship &amp; Q&amp;A Sessions
+                </div>
+              </div>
+              <div class="oi-item">
+                <div class="oi-check">✓</div>
+                <div class="oi-text">Private Career Network Access</div>
+              </div>
+              <div class="oi-item">
+                <div class="oi-check">✓</div>
+                <div class="oi-text">
+                  CV, LinkedIn &amp; Application Templates
+                </div>
+              </div>
+              <div class="oi-item">
+                <div class="oi-check">✓</div>
+                <div class="oi-text">Lifetime Access to All Recordings</div>
+              </div>
+              <div class="oi-item">
+                <div class="oi-check">✓</div>
+                <div class="oi-text">7-Day Money-Back Guarantee</div>
+              </div>
+            </div>
+
+            <div class="order-price-box">
+              <div class="opb-row">
+                <div class="opb-label">Program Full Price</div>
+                <div class="opb-val strike">₦200,000</div>
+              </div>
+              <div class="opb-row">
+                <div class="opb-label">Founders Launch Discount</div>
+                <div class="opb-val" style="color: #4ade80">−₦188,000</div>
+              </div>
+              <div class="opb-row total">
+                <div class="opb-label">You Pay Today</div>
+                <div class="opb-val">₦12,000</div>
+              </div>
+            </div>
+
+            <div
+              style="
+                margin-top: 28px;
+                padding: 20px 24px;
+                background: rgba(255, 200, 0, 0.04);
+                border: 1px solid rgba(255, 200, 0, 0.15);
+                border-radius: 3px;
+              "
+            >
+              <div
+                style="
+                  font-size: 11px;
+                  font-weight: 700;
+                  letter-spacing: 0.15em;
+                  text-transform: uppercase;
+                  color: rgba(255, 200, 0, 0.6);
+                  margin-bottom: 6px;
+                "
+              >
+                🛡️ Zero Risk
+              </div>
+              <p style="font-size: 13px; color: var(--muted); line-height: 1.6">
+                Implement the framework. If it delivers no value, reach out
+                within 7 days for a refund. No hassle. No questions.
+              </p>
+            </div>
+          </div>
+
+          <!-- RIGHT: FORM -->
+          <div class="checkout-form-wrap">
+            <h3>Your <span class="gold">Details</span></h3>
+            <div class="cf-sub">Secure checkout · Powered by Paystack</div>
+
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" id="f-name" placeholder="Your full name" />
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" id="f-email" placeholder="you@email.com" />
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <input type="tel" id="f-phone" placeholder="+234 000 000 0000" />
+            </div>
+            <div class="form-group">
+              <label>Current Role / Profession</label>
+              <input
+                type="text"
+                id="f-role"
+                placeholder="e.g. Software Engineer, HR Manager"
+              />
+            </div>
+            <div class="form-group">
+              <label>What's your #1 career goal?</label>
+              <select id="f-goal">
+                <option value="">Select one...</option>
+                <option>Land a remote dollar-paying job</option>
+                <option>Get promoted in current role</option>
+                <option>Transition to a new industry</option>
+                <option>Increase my salary by 2x</option>
+                <option>Build a global career profile</option>
+              </select>
+            </div>
+
+            <button class="paystack-btn" onclick="initPaystack()">
+              ⚡ &nbsp;Pay ₦12,000 & Secure Seat
+            </button>
+
+            <div
+              class="secure-badges"
+              style="margin-top: 14px; justify-content: center"
+            >
+              <div class="sb-item">SSL Secured</div>
+              <div class="sb-item">Paystack Protected</div>
+              <div class="sb-item">7-Day Guarantee</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="wrap">© 2026 Mentel Ltd · mentelltd.com</div>
+      </footer>
+    </div>
+
+    <!-- ════════════════════════════════════════════
+       PAGE 4 — THANK YOU
+  ════════════════════════════════════════════ -->
+    <div class="page" id="page-thankyou">
+      <nav>
+        <div class="wrap-wide nav-inner">
+          <div class="logo">Mentel <span>Ltd</span></div>
+          <div class="nav-right">mentelltd.com</div>
+        </div>
+      </nav>
+
+      <section class="ty-hero">
+        <div class="wrap">
+          <div class="ty-check">✓</div>
+          <div
+            class="section-label"
+            style="text-align: center; display: block; margin-bottom: 16px"
+          >
+            Payment Confirmed
+          </div>
+          <h1>You're<br /><span class="gold">In.</span></h1>
+          <p>
+            Welcome to the High-Income Career Accelerator. Your seat is
+            confirmed. The shift starts now.
+          </p>
+
+          <div
+            style="
+              background: var(--bg2);
+              border: 1px solid rgba(255, 200, 0, 0.2);
+              border-radius: 3px;
+              padding: 28px 36px;
+              max-width: 480px;
+              margin: 0 auto 60px;
+              text-align: left;
+            "
+          >
+            <div
+              style="
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: rgba(255, 200, 0, 0.5);
+                margin-bottom: 14px;
+              "
+            >
+              Order Confirmed
+            </div>
+            <div
+              style="
+                font-family: &quot;Bebas Neue&quot;, sans-serif;
+                font-size: 20px;
+                margin-bottom: 4px;
+              "
+              id="ty-name"
+            >
+              Welcome, [Your Name]
+            </div>
+            <div style="font-size: 13px; color: var(--muted)">
+              Confirmation sent to your email · Check your inbox &amp; spam
+              folder
+            </div>
+          </div>
+
+          <div
+            class="section-label"
+            style="text-align: center; display: block; margin-bottom: 32px"
+          >
+            What Happens Next
+          </div>
+          <div class="ty-steps">
+            <div class="ty-step">
+              <div class="step-num">01</div>
+              <h4>Check Your <em>Email</em></h4>
+              <p>
+                You'll receive a confirmation email with your access details and
+                onboarding instructions within the next few minutes.
+              </p>
+            </div>
+            <div class="ty-step">
+              <div class="step-num">02</div>
+              <h4>Join The <em>Community</em></h4>
+              <p>
+                The link to our private career network is in your email. Join
+                immediately — this is where the real value begins before the
+                program even starts.
+              </p>
+            </div>
+            <div class="ty-step">
+              <div class="step-num">03</div>
+              <h4>Complete Your <em>Profile</em></h4>
+              <p>
+                Follow the onboarding sequence in the community to set up your
+                profile and connect with your cohort members.
+              </p>
+            </div>
+            <div class="ty-step">
+              <div class="step-num">04</div>
+              <h4>Show Up &amp; <em>Implement</em></h4>
+              <p>
+                This only works when you work it. Block time on your calendar
+                now. Your income trajectory changes when you take action.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="ty-share">
+        <div class="wrap">
+          <div
+            class="section-label"
+            style="text-align: center; display: block; margin-bottom: 14px"
+          >
+            Spread The Word
+          </div>
+          <h3>Know Someone<br /><span class="gold">Who Needs This?</span></h3>
+          <p>
+            If you know another Nigerian professional tired of earning below
+            their potential, share this with them. Early access ends soon.
+          </p>
+          <div class="share-btns">
+            <a
+              href="https://wa.me/?text=I%20just%20secured%20my%20seat%20at%20the%20High-Income%20Career%20Accelerator%20by%20Mentel%20Ltd.%20Only%20%E2%82%A612%2C000%20for%20early%20access%20%E2%80%94%20check%20it%20out%3A%20mentelltd.com"
+              target="_blank"
+              class="btn-primary"
+              style="
+                background: #25d366;
+                color: #fff;
+                font-size: 12px;
+                padding: 15px 28px;
+              "
+            >
+              📲 Share on WhatsApp
+            </a>
+            <a
+              href="https://twitter.com/intent/tweet?text=Just%20secured%20my%20seat%20at%20%40MentelLtd%27s%20High-Income%20Career%20Accelerator.%20Nigerian%20professionals%20%E2%80%94%20this%20is%20the%20positioning%20system%20we%20needed.%20Early%20access%20%E2%82%A612%2C000%20%F0%9F%94%A5%20mentelltd.com"
+              target="_blank"
+              class="btn-ghost"
+              style="font-size: 12px; padding: 15px 28px"
+            >
+              𝕏 Share on X
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="wrap">
+          © 2026 Mentel Ltd · mentelltd.com · All Rights Reserved
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // ─── PAGE NAVIGATION ───
+      function goTo(pageId) {
+        document
+          .querySelectorAll(".page")
+          .forEach((p) => p.classList.remove("active"));
+        const el = document.getElementById("page-" + pageId);
+        if (el) {
+          el.classList.add("active");
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      }
+
+      // ─── COUNTDOWN TIMER ───
+      // Target: 2 days, 17 hours from page load
+      const endTime =
+        new Date().getTime() +
+        2 * 24 * 60 * 60 * 1000 +
+        17 * 60 * 60 * 1000 +
+        44 * 60 * 1000 +
+        8 * 1000;
+
+      function pad(n) {
+        return String(n).padStart(2, "0");
+      }
+
+      function updateTimers() {
+        const now = new Date().getTime();
+        const diff = Math.max(0, endTime - now);
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+        );
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+        // Big timer
+        const btDays = document.getElementById("bt-days");
+        const btHours = document.getElementById("bt-hours");
+        const btMins = document.getElementById("bt-mins");
+        const btSecs = document.getElementById("bt-secs");
+        if (btDays) btDays.textContent = pad(days);
+        if (btHours) btHours.textContent = pad(hours);
+        if (btMins) btMins.textContent = pad(mins);
+        if (btSecs) btSecs.textContent = pad(secs);
+
+        // Mini timer on checkout page
+        const mini = document.getElementById("mini-timer");
+        if (mini) mini.textContent = `${pad(hours)}:${pad(mins)}:${pad(secs)}`;
+      }
+
+      setInterval(updateTimers, 1000);
+      updateTimers();
+
+      // ─── PAYSTACK INTEGRATION ───
+      function initPaystack() {
+        const name = document.getElementById("f-name").value.trim();
+        const email = document.getElementById("f-email").value.trim();
+        const phone = document.getElementById("f-phone").value.trim();
+
+        if (!name || !email) {
+          alert("Please enter your name and email to continue.");
+          return;
+        }
+
+        // Update thank you page name
+        const tyName = document.getElementById("ty-name");
+        if (tyName) tyName.textContent = `Welcome, ${name}`;
+
+        // ── PAYSTACK INLINE ──
+        // Replace 'pk_test_YOUR_PUBLIC_KEY' with your actual Paystack public key
+        // and update the callback/redirect as needed.
+        const handler = PaystackPop.setup({
+          key: "pk_test_YOUR_PUBLIC_KEY_HERE", // 🔑 Replace with your Paystack public key
+          email: email,
+          amount: 1200000, // Amount in kobo (₦12,000 × 100)
+          currency: "NGN",
+          ref: "MENTEL-" + Date.now(),
+          metadata: {
+            custom_fields: [
+              {
+                display_name: "Full Name",
+                variable_name: "full_name",
+                value: name,
+              },
+              {
+                display_name: "Phone Number",
+                variable_name: "phone_number",
+                value: phone,
+              },
+            ],
+          },
+          callback: function (response) {
+            // Payment successful
+            goTo("thankyou");
+          },
+          onClose: function () {
+            // User closed the payment popup — do nothing
+          },
+        });
+
+        handler.openIframe();
+      }
+    </script>
+
+    <!-- Paystack inline script (loads the PaystackPop object) -->
+    <script src="https://js.paystack.co/v1/inline.js"></script>
   </body>
 </html>

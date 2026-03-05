@@ -256,222 +256,10 @@
         z-index: 2;
       }
 
-      /* ── DATE BANNER ── */
-      .date-banner {
-        background: linear-gradient(
-          135deg,
-          rgba(255, 200, 0, 0.12) 0%,
-          rgba(255, 136, 0, 0.08) 100%
-        );
-        border: 1px solid rgba(255, 200, 0, 0.3);
-        border-radius: 4px;
-        padding: 28px 36px;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 24px;
-        margin: 40px 0 0;
-        position: relative;
-        overflow: hidden;
+      /* PAGE 1 */
+      #page-landing {
+        animation: fadeIn 0.5s ease;
       }
-      .date-banner::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: linear-gradient(
-          90deg,
-          var(--gold),
-          var(--orange),
-          transparent
-        );
-      }
-      .date-block {
-        text-align: center;
-      }
-      .date-block-icon {
-        font-size: 20px;
-        margin-bottom: 6px;
-      }
-      .date-block-label {
-        font-size: 9px;
-        font-weight: 700;
-        letter-spacing: 0.22em;
-        text-transform: uppercase;
-        color: rgba(255, 200, 0, 0.55);
-        margin-bottom: 4px;
-      }
-      .date-block-value {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 22px;
-        color: var(--text);
-        line-height: 1.1;
-      }
-      .date-block-sub {
-        font-size: 11px;
-        color: rgba(240, 237, 228, 0.42);
-        margin-top: 2px;
-      }
-      .date-block.highlight .date-block-value {
-        color: var(--gold);
-      }
-
-      /* ── LIVE ACCESS BADGE ── */
-      .live-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: rgba(255, 200, 0, 0.1);
-        border: 1px solid rgba(255, 200, 0, 0.4);
-        border-radius: 3px;
-        padding: 8px 16px;
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: var(--gold);
-      }
-      .live-dot {
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        background: #ff4444;
-        animation: livePulse 1.4s ease-in-out infinite;
-        flex-shrink: 0;
-      }
-      @keyframes livePulse {
-        0%,
-        100% {
-          opacity: 1;
-          transform: scale(1);
-        }
-        50% {
-          opacity: 0.5;
-          transform: scale(1.3);
-        }
-      }
-
-      /* ── LIVE ACCESS BOX ── */
-      .live-access-box {
-        background: rgba(255, 200, 0, 0.04);
-        border: 1px solid rgba(255, 200, 0, 0.25);
-        border-left: 3px solid var(--gold);
-        border-radius: 3px;
-        padding: 24px 28px;
-        margin-top: 32px;
-        display: flex;
-        align-items: flex-start;
-        gap: 16px;
-      }
-      .live-access-box .la-icon {
-        font-size: 26px;
-        flex-shrink: 0;
-        margin-top: 2px;
-      }
-      .live-access-box h5 {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 22px;
-        color: var(--gold);
-        margin-bottom: 4px;
-      }
-      .live-access-box p {
-        font-size: 13px;
-        color: rgba(240, 237, 228, 0.55);
-        line-height: 1.65;
-      }
-      .live-access-box p strong {
-        color: var(--text);
-        font-weight: 600;
-      }
-
-      /* ── SCHEDULE STRIP ── */
-      .schedule-strip {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-        margin-top: 40px;
-      }
-      .sched-row {
-        display: flex;
-        align-items: stretch;
-        border: 1px solid var(--border);
-        overflow: hidden;
-        transition: border-color 0.2s;
-      }
-      .sched-row:hover {
-        border-color: rgba(255, 200, 0, 0.4);
-      }
-      .sched-day {
-        background: var(--bg2);
-        padding: 20px 24px;
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 13px;
-        letter-spacing: 0.12em;
-        color: var(--gold);
-        line-height: 1;
-        flex-shrink: 0;
-        width: 120px;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 4px;
-        border-right: 1px solid var(--border);
-      }
-      .sched-day-num {
-        font-size: 36px;
-        line-height: 1;
-        color: rgba(255, 200, 0, 0.25);
-      }
-      .sched-time {
-        background: rgba(255, 200, 0, 0.06);
-        padding: 20px 24px;
-        flex-shrink: 0;
-        width: 180px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        border-right: 1px solid var(--border);
-      }
-      .sched-time-main {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 22px;
-        color: var(--text);
-      }
-      .sched-time-tz {
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: rgba(240, 237, 228, 0.42);
-        margin-top: 2px;
-      }
-      .sched-content {
-        padding: 20px 28px;
-        flex: 1;
-      }
-      .sched-content h5 {
-        font-family: "Bebas Neue", sans-serif;
-        font-size: 20px;
-        margin-bottom: 4px;
-      }
-      .sched-content h5 em {
-        color: var(--gold);
-        font-style: normal;
-      }
-      .sched-content p {
-        font-size: 13px;
-        color: rgba(240, 237, 228, 0.42);
-      }
-      .sched-live {
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        padding: 0 24px;
-      }
-
       @keyframes fadeIn {
         from {
           opacity: 0;
@@ -482,10 +270,6 @@
           transform: translateY(0);
         }
       }
-      #page-landing {
-        animation: fadeIn 0.5s ease;
-      }
-
       .hero {
         padding: 80px 0 60px;
         text-align: center;
@@ -581,6 +365,8 @@
         color: rgba(240, 237, 228, 0.42);
         line-height: 1.6;
       }
+
+      /* INSTRUCTOR */
       .instructor-card {
         background: var(--bg2);
         border: 1px solid rgba(255, 200, 0, 0.22);
@@ -697,6 +483,8 @@
         flex-shrink: 0;
         margin-top: 2px;
       }
+
+      /* WEEKS */
       .weeks {
         display: flex;
         flex-direction: column;
@@ -744,6 +532,8 @@
         font-size: 14px;
         color: rgba(240, 237, 228, 0.42);
       }
+
+      /* BONUSES */
       .bonus-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -768,6 +558,8 @@
         font-size: 13px;
         color: rgba(240, 237, 228, 0.42);
       }
+
+      /* BEFORE AFTER */
       .before-after {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -814,6 +606,8 @@
         content: "✓ ";
         color: var(--gold);
       }
+
+      /* TESTIMONIALS */
       .testi-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -855,6 +649,8 @@
         text-transform: uppercase;
         color: rgba(255, 200, 0, 0.7);
       }
+
+      /* VALUE STACK */
       .vs-table {
         margin-top: 40px;
         border: 1px solid var(--border);
@@ -892,6 +688,8 @@
         color: var(--gold);
         font-size: 36px;
       }
+
+      /* INLINE URGENCY */
       .inline-urgency {
         background: rgba(255, 200, 0, 0.05);
         border: 1px solid rgba(255, 200, 0, 0.2);
@@ -946,6 +744,8 @@
         color: rgba(255, 200, 0, 0.3);
         line-height: 1;
       }
+
+      /* GUARANTEE */
       .guarantee-box {
         background: var(--bg2);
         border: 1px solid rgba(255, 200, 0, 0.2);
@@ -969,6 +769,8 @@
         line-height: 1.7;
         max-width: 540px;
       }
+
+      /* FAQ */
       .faq-list {
         margin-top: 40px;
         display: flex;
@@ -1024,6 +826,8 @@
         max-height: 300px;
         padding: 0 28px 24px;
       }
+
+      /* FOR SECTION */
       .for-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -1086,7 +890,7 @@
         margin: 0 auto 48px;
       }
 
-      /* PAGE 2 */
+      /* PAGE 2 COUNTDOWN */
       #page-countdown {
         animation: fadeIn 0.5s ease;
       }
@@ -1208,7 +1012,7 @@
         color: rgba(240, 237, 228, 0.42);
       }
 
-      /* PAGE 3 */
+      /* PAGE 3 CHECKOUT */
       #page-checkout {
         animation: fadeIn 0.5s ease;
       }
@@ -1388,7 +1192,7 @@
         box-shadow: 0 8px 50px rgba(255, 200, 0, 0.4);
       }
 
-      /* PAGE 4 */
+      /* PAGE 4 THANK YOU */
       #page-thankyou {
         animation: fadeIn 0.6s ease;
       }
@@ -1473,6 +1277,7 @@
         flex-wrap: wrap;
       }
 
+      /* RESPONSIVE */
       @media (max-width: 860px) {
         .testi-grid {
           grid-template-columns: 1fr 1fr;
@@ -1483,9 +1288,6 @@
         .instructor-photo-col {
           border-right: none;
           border-bottom: 1px solid rgba(255, 200, 0, 0.14);
-        }
-        .sched-live {
-          display: none;
         }
       }
       @media (max-width: 720px) {
@@ -1513,15 +1315,6 @@
           flex-direction: column;
           text-align: center;
         }
-        .sched-row {
-          flex-direction: column;
-        }
-        .sched-day,
-        .sched-time {
-          width: 100%;
-          border-right: none;
-          border-bottom: 1px solid var(--border);
-        }
       }
     </style>
   </head>
@@ -1531,7 +1324,7 @@
     <div class="glow-bl"></div>
     <div class="top-bar"></div>
 
-    <!-- PAGE 1 — LANDING -->
+    <!-- ══════════════ PAGE 1 — LANDING ══════════════ -->
     <div class="page active" id="page-landing">
       <nav>
         <div class="wrap-wide nav-inner">
@@ -1584,57 +1377,6 @@
             <span class="tag">Live · Virtual · 2026</span>
             <span class="tag">6-Week Framework</span>
           </div>
-
-          <!-- ── WEBINAR DATE BANNER ── -->
-          <div
-            class="date-banner"
-            style="text-align: left; margin-bottom: 40px"
-          >
-            <div class="date-block highlight">
-              <div class="date-block-icon">📅</div>
-              <div class="date-block-label">Starts</div>
-              <!-- ✏️ UPDATE DATE BELOW -->
-              <div class="date-block-value">Friday<br />July 18, 2026</div>
-              <div class="date-block-sub">Day 1 of 3</div>
-            </div>
-            <div class="date-block">
-              <div class="date-block-icon">🕔</div>
-              <div class="date-block-label">Time</div>
-              <!-- ✏️ UPDATE TIME BELOW -->
-              <div class="date-block-value">4:00 PM</div>
-              <div class="date-block-sub">WAT · (GMT+1) Nigeria Time</div>
-            </div>
-            <div class="date-block">
-              <div class="date-block-icon">📍</div>
-              <div class="date-block-label">Location</div>
-              <div class="date-block-value">100% Virtual</div>
-              <div class="date-block-sub">Zoom link sent after payment</div>
-            </div>
-            <div
-              class="date-block"
-              style="
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-              "
-            >
-              <span class="live-badge"
-                ><span class="live-dot"></span>Live Access Included</span
-              >
-              <div
-                style="
-                  font-size: 11px;
-                  color: rgba(240, 237, 228, 0.42);
-                  margin-top: 10px;
-                  text-align: center;
-                "
-              >
-                Real-time Q&amp;A · Direct mentorship
-              </div>
-            </div>
-          </div>
-
           <div style="margin-bottom: 18px">
             <button
               class="btn-primary"
@@ -1757,7 +1499,7 @@
 
       <div class="divider" style="position: relative; z-index: 2"></div>
 
-      <!-- INSTRUCTOR -->
+      <!-- INSTRUCTOR BIO -->
       <section style="padding: 80px 0">
         <div class="wrap">
           <div class="section-label">Who's Teaching This</div>
@@ -1773,12 +1515,10 @@
           <div class="instructor-card">
             <div class="instructor-photo-col">
               <div class="instructor-avatar">
-                <img
-                  src="84023651-removebg-preview.png"
-                  alt="founders profile image"
-                />
+                <!-- Replace with: <img src="your-photo.jpg" alt="Instructor" /> -->
+                👤
               </div>
-              <div class="instructor-name">Ukaegbu Gray</div>
+              <div class="instructor-name">Speaker Name</div>
               <div class="instructor-title-lbl">Founder · Mentel Ltd</div>
               <div class="instructor-stats">
                 <div class="instructor-stat">
@@ -1786,11 +1526,11 @@
                   <div class="stat-lbl">Professionals Mentored</div>
                 </div>
                 <div class="instructor-stat">
-                  <div class="stat-num">$350K+</div>
+                  <div class="stat-num">$2M+</div>
                   <div class="stat-lbl">Salary Increases Unlocked</div>
                 </div>
                 <div class="instructor-stat">
-                  <div class="stat-num">6 Yrs</div>
+                  <div class="stat-num">8 Yrs</div>
                   <div class="stat-lbl">Career Strategy Experience</div>
                 </div>
               </div>
@@ -1852,143 +1592,7 @@
 
       <div class="divider" style="position: relative; z-index: 2"></div>
 
-      <!-- 3-DAY SCHEDULE -->
-      <section style="padding: 80px 0">
-        <div class="wrap">
-          <div class="section-label">Event Schedule</div>
-          <h2
-            style="
-              font-size: clamp(42px, 7vw, 80px);
-              line-height: 0.9;
-              margin-bottom: 12px;
-            "
-          >
-            3 Days.<br /><span class="gold">Live. Virtual.</span
-            ><br />Transformative.
-          </h2>
-          <p
-            style="
-              font-size: 16px;
-              color: rgba(240, 237, 228, 0.42);
-              max-width: 540px;
-              margin-bottom: 8px;
-            "
-          >
-            All sessions are live — you'll be in the room with the instructor
-            and cohort in real time. Recordings are provided but live attendance
-            is where the breakthroughs happen.
-          </p>
-
-          <!-- LIVE ACCESS CALLOUT -->
-          <div class="live-access-box">
-            <div class="la-icon">🎙️</div>
-            <div>
-              <h5>Live Virtual Access — Included With Every Seat</h5>
-              <p>
-                When you register, you get a
-                <strong>direct Zoom link</strong> to all three live sessions.
-                Ask questions in real time, get live feedback on your CV or
-                LinkedIn profile, and participate in hot-seat coaching. This is
-                not a pre-recorded course —
-                <strong>it's a live event you attend.</strong>
-              </p>
-            </div>
-          </div>
-
-          <div class="schedule-strip">
-            <div class="sched-row">
-              <div class="sched-day">
-                <div class="sched-day-num">01</div>
-                <!-- ✏️ UPDATE DATE -->
-                <div>Fri · May 22</div>
-              </div>
-              <div class="sched-time">
-                <!-- ✏️ UPDATE TIME -->
-                <div class="sched-time-main">4:00 PM</div>
-                <div class="sched-time-tz">WAT · Nigeria</div>
-              </div>
-              <div class="sched-content">
-                <h5>Income Repositioning &amp; <em>Personal Brand</em></h5>
-                <p>
-                  Define your positioning, reframe your story for global
-                  audiences, and build the foundation of your high-income
-                  identity.
-                </p>
-              </div>
-              <div class="sched-live">
-                <span class="live-badge"
-                  ><span class="live-dot"></span>Live</span
-                >
-              </div>
-            </div>
-            <div class="sched-row">
-              <div class="sched-day">
-                <div class="sched-day-num">02</div>
-                <!-- ✏️ UPDATE DATE -->
-                <div>Sat · Jul 19</div>
-              </div>
-              <div class="sched-time">
-                <!-- ✏️ UPDATE TIME -->
-                <div class="sched-time-main">4:00 PM</div>
-                <div class="sched-time-tz">WAT · Nigeria</div>
-              </div>
-              <div class="sched-content">
-                <h5>LinkedIn, CV &amp; <em>Global Strategy</em></h5>
-                <p>
-                  Full profile overhaul, keyword strategy, CV templates, and
-                  your targeted global job application system.
-                </p>
-              </div>
-              <div class="sched-live">
-                <span class="live-badge"
-                  ><span class="live-dot"></span>Live</span
-                >
-              </div>
-            </div>
-            <div class="sched-row">
-              <div class="sched-day">
-                <div class="sched-day-num">03</div>
-                <!-- ✏️ UPDATE DATE -->
-                <div>Sun · Jul 20</div>
-              </div>
-              <div class="sched-time">
-                <!-- ✏️ UPDATE TIME -->
-                <div class="sched-time-main">4:00 PM</div>
-                <div class="sched-time-tz">WAT · Nigeria</div>
-              </div>
-              <div class="sched-content">
-                <h5>Interview Mastery &amp; <em>Salary Negotiation</em></h5>
-                <p>
-                  Live hot-seat practice, negotiation scripts, and the
-                  psychology of pushing back on offers to earn what you're
-                  worth.
-                </p>
-              </div>
-              <div class="sched-live">
-                <span class="live-badge"
-                  ><span class="live-dot"></span>Live</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <div
-            style="
-              margin-top: 28px;
-              font-size: 12px;
-              color: rgba(240, 237, 228, 0.42);
-              font-style: italic;
-            "
-          >
-            📹 &nbsp;All sessions are recorded. Lifetime access is included so
-            you can rewatch anything you need.
-          </div>
-        </div>
-      </section>
-
-      <div class="divider" style="position: relative; z-index: 2"></div>
-
-      <!-- 6-WEEK FRAMEWORK -->
+      <!-- PROGRAM WEEKS -->
       <section style="padding: 80px 0">
         <div class="wrap">
           <div class="section-label">The 6-Week Framework</div>
@@ -2103,16 +1707,16 @@
               <div class="bonus-icon">🎙️</div>
               <h4>3-Day Live Virtual Intensive</h4>
               <p>
-                Concentrated live sessions Jul 18–20, 2026. You attend live. You
-                ask questions live. You get feedback live.
+                Concentrated live sessions designed to accelerate your progress
+                in real time.
               </p>
             </div>
             <div class="bonus-card">
               <div class="bonus-icon">👥</div>
               <h4>Live Mentorship &amp; Q&amp;A</h4>
               <p>
-                Direct access to instructors in real time. Ask questions, get
-                feedback, unblock yourself on the call.
+                Direct access to instructors. Ask questions, get feedback,
+                unblock yourself.
               </p>
             </div>
             <div class="bonus-card">
@@ -2135,8 +1739,8 @@
               <div class="bonus-icon">♾️</div>
               <h4>Lifetime Access to Recordings</h4>
               <p>
-                Miss nothing. Rewatch any session. Revisit frameworks whenever
-                you need them.
+                Miss nothing. Rewatch any session. Revisit frameworks when you
+                need them.
               </p>
             </div>
           </div>
@@ -2259,7 +1863,7 @@
         </div>
       </section>
 
-      <!-- CTA -->
+      <!-- CTA AFTER TESTIMONIALS -->
       <div
         style="
           padding: 60px 0;
@@ -2295,7 +1899,7 @@
               color: rgba(240, 237, 228, 0.42);
             "
           >
-            Early access · First 2,000 seats only · Live sessions Jul 18–20
+            Early access · First 2,000 seats only
           </div>
         </div>
       </div>
@@ -2389,7 +1993,7 @@
         </div>
       </section>
 
-      <!-- CTA -->
+      <!-- CTA AFTER GUARANTEE -->
       <div
         style="
           padding: 60px 0;
@@ -2425,7 +2029,7 @@
               color: rgba(240, 237, 228, 0.42);
             "
           >
-            7-day guarantee · ₦12,000 one-time · All inclusive · Live Jul 18–20
+            7-day guarantee · ₦12,000 one-time · All inclusive
           </div>
         </div>
       </div>
@@ -2446,34 +2050,6 @@
             You're Probably<br /><span class="gold">Wondering...</span>
           </h2>
           <div class="faq-list">
-            <div class="faq-item">
-              <div class="faq-q" onclick="toggleFaq(this)">
-                When exactly are the live sessions?<span class="faq-icon"
-                  >+</span
-                >
-              </div>
-              <div class="faq-a">
-                The 3-day live virtual intensive runs Friday–Sunday, July 18–20,
-                2026, starting at 4:00 PM WAT (Nigeria Time / GMT+1) each day.
-                Your Zoom link will be sent to your email immediately after
-                registration. Add it to your calendar — these sessions are where
-                the biggest breakthroughs happen.
-              </div>
-            </div>
-            <div class="faq-item">
-              <div class="faq-q" onclick="toggleFaq(this)">
-                What if I can't attend a session live?<span class="faq-icon"
-                  >+</span
-                >
-              </div>
-              <div class="faq-a">
-                All sessions are recorded and you'll have lifetime access. We
-                strongly recommend attending live for Q&amp;A and real-time
-                feedback, but the recordings are comprehensive. Many
-                participants have achieved excellent results going through
-                recordings alone.
-              </div>
-            </div>
             <div class="faq-item">
               <div class="faq-q" onclick="toggleFaq(this)">
                 I already have a job. Is this still for me?<span
@@ -2503,20 +2079,6 @@
             </div>
             <div class="faq-item">
               <div class="faq-q" onclick="toggleFaq(this)">
-                Is ₦12,000 really the full price? No upsells?<span
-                  class="faq-icon"
-                  >+</span
-                >
-              </div>
-              <div class="faq-a">
-                ₦12,000 is the complete Founders Launch price. It covers the
-                full 6-week framework, all live sessions, mentorship, templates,
-                private community, and lifetime recording access. No hidden
-                fees. No required upgrades.
-              </div>
-            </div>
-            <div class="faq-item">
-              <div class="faq-q" onclick="toggleFaq(this)">
                 How much time do I need to commit each week?<span
                   class="faq-icon"
                   >+</span
@@ -2526,7 +2088,49 @@
                 Roughly 4–6 hours per week. This includes watching the training,
                 completing the weekly deliverable, and attending live sessions.
                 The program is designed around working professionals — dense and
-                focused, not padded.
+                focused, not padded. If you block weekend mornings, that's more
+                than enough.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q" onclick="toggleFaq(this)">
+                Is ₦12,000 really the full price? No upsells?<span
+                  class="faq-icon"
+                  >+</span
+                >
+              </div>
+              <div class="faq-a">
+                ₦12,000 is the complete Founders Launch price. It covers the
+                full 6-week framework, all live sessions, mentorship, templates,
+                private community, and lifetime recording access. No hidden
+                fees. No required upgrades. This price exists because it's our
+                first public cohort.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q" onclick="toggleFaq(this)">
+                What if I can't attend the live sessions?<span class="faq-icon"
+                  >+</span
+                >
+              </div>
+              <div class="faq-a">
+                All sessions are recorded and you'll have lifetime access. We
+                strongly recommend attending live for Q&amp;A and real-time
+                feedback, but the recordings are comprehensive. Many
+                participants have achieved excellent results going through
+                recordings alone.
+              </div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-q" onclick="toggleFaq(this)">
+                How quickly can I expect results?<span class="faq-icon">+</span>
+              </div>
+              <div class="faq-a">
+                Some participants see recruiter interest within 1–2 weeks of
+                completing the LinkedIn module. Offer-stage outcomes typically
+                happen within 4–12 weeks of completing the program. The
+                framework compresses timelines significantly — but only if you
+                do the work.
               </div>
             </div>
             <div class="faq-item">
@@ -2580,7 +2184,7 @@
         </div>
       </section>
 
-      <!-- URGENCY TIMER -->
+      <!-- INLINE URGENCY TIMER -->
       <div class="wrap" style="position: relative; z-index: 2">
         <div class="inline-urgency">
           <div>
@@ -2640,8 +2244,7 @@
               color: rgba(240, 237, 228, 0.42);
             "
           >
-            Live sessions Jul 18–20, 2026 · Early access seats are limited ·
-            Price increases after cohort fills
+            Early access seats are limited · Price increases after cohort fills
           </div>
         </div>
       </section>
@@ -2653,7 +2256,7 @@
       </footer>
     </div>
 
-    <!-- PAGE 2 — COUNTDOWN -->
+    <!-- ══════════════ PAGE 2 — COUNTDOWN ══════════════ -->
     <div class="page" id="page-countdown">
       <nav>
         <div class="wrap-wide nav-inner">
@@ -2680,65 +2283,6 @@
             This is your window. Once early access closes, the Founders Launch
             Price of ₦12,000 is gone. Future cohorts will pay the full price.
           </p>
-
-          <!-- DATE REMINDER ON COUNTDOWN PAGE -->
-          <div
-            style="
-              display: inline-flex;
-              align-items: center;
-              gap: 20px;
-              flex-wrap: wrap;
-              justify-content: center;
-              background: rgba(255, 200, 0, 0.06);
-              border: 1px solid rgba(255, 200, 0, 0.22);
-              border-radius: 4px;
-              padding: 16px 28px;
-              margin-bottom: 40px;
-            "
-          >
-            <div
-              style="
-                font-size: 10px;
-                font-weight: 700;
-                letter-spacing: 0.18em;
-                text-transform: uppercase;
-                color: rgba(255, 200, 0, 0.55);
-              "
-            >
-              Live Event Dates
-            </div>
-            <!-- ✏️ UPDATE DATES -->
-            <div
-              style="
-                font-family: &quot;Bebas Neue&quot;, sans-serif;
-                font-size: 22px;
-                color: var(--text);
-              "
-            >
-              Jul 18 – 20, 2026
-            </div>
-            <div
-              style="
-                width: 1px;
-                height: 28px;
-                background: rgba(255, 200, 0, 0.2);
-              "
-            ></div>
-            <!-- ✏️ UPDATE TIME -->
-            <div
-              style="
-                font-family: &quot;Bebas Neue&quot;, sans-serif;
-                font-size: 22px;
-                color: var(--gold);
-              "
-            >
-              4:00 PM WAT Daily
-            </div>
-            <span class="live-badge"
-              ><span class="live-dot"></span>Live Virtual</span
-            >
-          </div>
-
           <div class="big-timer">
             <div class="big-unit">
               <span class="big-num" id="bt-days">02</span>
@@ -2800,11 +2344,10 @@
             </div>
             <div class="urgency-card">
               <div class="uc-num">03</div>
-              <h4><em>Live Zoom Access</em> Included</h4>
+              <h4>Live Access <em>Included</em></h4>
               <p>
-                Your seat includes a live Zoom link to all 3 sessions (Jul 18–20
-                at 4 PM WAT). Ask questions in real time. Get live feedback.
-                This is a live event — not pre-recorded.
+                Early access members get priority placement for live virtual
+                intensive sessions — which cannot be replicated in recordings.
               </p>
             </div>
           </div>
@@ -2813,7 +2356,7 @@
       <footer><div class="wrap">© 2026 Mentel Ltd · mentelltd.com</div></footer>
     </div>
 
-    <!-- PAGE 3 — CHECKOUT -->
+    <!-- ══════════════ PAGE 3 — CHECKOUT ══════════════ -->
     <div class="page" id="page-checkout">
       <nav>
         <div class="wrap-wide nav-inner">
@@ -2846,8 +2389,7 @@
             color: var(--gold);
           "
           >⏳ Early Access Closes In: &nbsp;<span id="mini-timer">--:--:--</span
-          >&nbsp;· &nbsp;518 Seats Remaining &nbsp;·&nbsp; 📅 Live Jul 18–20 · 4
-          PM WAT</span
+          >&nbsp;· &nbsp;518 Seats Remaining</span
         >
       </div>
       <div class="wrap-wide">
@@ -2858,53 +2400,6 @@
             <p class="os-sub">
               You're one step away from your positioning shift.
             </p>
-
-            <!-- DATE BLOCK IN CHECKOUT -->
-            <div
-              style="
-                background: rgba(255, 200, 0, 0.05);
-                border: 1px solid rgba(255, 200, 0, 0.2);
-                border-radius: 3px;
-                padding: 20px 24px;
-                margin-bottom: 32px;
-                display: flex;
-                align-items: center;
-                gap: 20px;
-                flex-wrap: wrap;
-              "
-            >
-              <div>
-                <div
-                  style="
-                    font-size: 9px;
-                    font-weight: 700;
-                    letter-spacing: 0.2em;
-                    text-transform: uppercase;
-                    color: rgba(255, 200, 0, 0.55);
-                    margin-bottom: 4px;
-                  "
-                >
-                  📅 Live Event
-                </div>
-                <!-- ✏️ UPDATE DATES/TIME -->
-                <div
-                  style="
-                    font-family: &quot;Bebas Neue&quot;, sans-serif;
-                    font-size: 20px;
-                    color: var(--text);
-                  "
-                >
-                  Jul 18–20, 2026 · 4:00 PM WAT
-                </div>
-                <div style="font-size: 12px; color: rgba(240, 237, 228, 0.42)">
-                  Zoom link sent to your email after payment
-                </div>
-              </div>
-              <span class="live-badge" style="margin-left: auto"
-                ><span class="live-dot"></span>Live Virtual Access</span
-              >
-            </div>
-
             <div class="order-include">
               <h4>What's Included:</h4>
               <div class="oi-item">
@@ -2913,13 +2408,7 @@
               </div>
               <div class="oi-item">
                 <div class="oi-check">✓</div>
-                <div class="oi-text">
-                  3-Day Live Virtual Intensive (Jul 18–20)
-                </div>
-              </div>
-              <div class="oi-item">
-                <div class="oi-check">✓</div>
-                <div class="oi-text">Live Zoom Access — All 3 Sessions</div>
+                <div class="oi-text">3-Day Live Virtual Intensive</div>
               </div>
               <div class="oi-item">
                 <div class="oi-check">✓</div>
@@ -3017,8 +2506,8 @@
               />
             </div>
             <div class="form-group">
-              <label>What's your #1 career goal?</label>
-              <select id="f-goal">
+              <label>What's your #1 career goal?</label
+              ><select id="f-goal">
                 <option value="">Select one...</option>
                 <option>Land a remote dollar-paying job</option>
                 <option>Get promoted in current role</option>
@@ -3050,7 +2539,7 @@
       <footer><div class="wrap">© 2026 Mentel Ltd · mentelltd.com</div></footer>
     </div>
 
-    <!-- PAGE 4 — THANK YOU -->
+    <!-- ══════════════ PAGE 4 — THANK YOU ══════════════ -->
     <div class="page" id="page-thankyou">
       <nav>
         <div class="wrap-wide nav-inner">
@@ -3099,38 +2588,15 @@
               style="
                 font-family: &quot;Bebas Neue&quot;, sans-serif;
                 font-size: 20px;
-                margin-bottom: 8px;
+                margin-bottom: 4px;
               "
               id="ty-name"
             >
               Welcome, [Your Name]
             </div>
-            <!-- ✏️ UPDATE DATES/TIME -->
-            <div
-              style="
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                margin-bottom: 8px;
-              "
-            >
-              <span
-                class="live-badge"
-                style="font-size: 10px; padding: 6px 12px"
-                ><span class="live-dot"></span>Live Event</span
-              >
-              <span
-                style="
-                  font-family: &quot;Bebas Neue&quot;, sans-serif;
-                  font-size: 16px;
-                  color: var(--gold);
-                "
-                >Jul 18–20, 2026 · 4:00 PM WAT</span
-              >
-            </div>
             <div style="font-size: 13px; color: rgba(240, 237, 228, 0.42)">
-              Zoom link + confirmation sent to your email · Check inbox &amp;
-              spam folder
+              Confirmation sent to your email · Check your inbox &amp; spam
+              folder
             </div>
           </div>
           <div
@@ -3144,21 +2610,12 @@
               <div class="step-num">01</div>
               <h4>Check Your <em>Email</em></h4>
               <p>
-                Your Zoom link for all 3 live sessions (Jul 18–20) and
-                onboarding instructions will arrive in the next few minutes.
-                Check your spam folder too.
+                You'll receive a confirmation email with your access details and
+                onboarding instructions within the next few minutes.
               </p>
             </div>
             <div class="ty-step">
               <div class="step-num">02</div>
-              <h4>Add to <em>Calendar</em></h4>
-              <p>
-                Block July 18, 19 &amp; 20 at 4:00 PM WAT. These are live
-                sessions — showing up is where the transformation happens.
-              </p>
-            </div>
-            <div class="ty-step">
-              <div class="step-num">03</div>
               <h4>Join The <em>Community</em></h4>
               <p>
                 The link to our private career network is in your email. Join
@@ -3167,11 +2624,19 @@
               </p>
             </div>
             <div class="ty-step">
+              <div class="step-num">03</div>
+              <h4>Complete Your <em>Profile</em></h4>
+              <p>
+                Follow the onboarding sequence in the community to set up your
+                profile and connect with your cohort members.
+              </p>
+            </div>
+            <div class="ty-step">
               <div class="step-num">04</div>
               <h4>Show Up &amp; <em>Implement</em></h4>
               <p>
-                This only works when you work it. Your income trajectory changes
-                when you take action. We'll see you on the 18th.
+                This only works when you work it. Block time on your calendar
+                now. Your income trajectory changes when you take action.
               </p>
             </div>
           </div>
@@ -3201,7 +2666,7 @@
           </p>
           <div class="share-btns">
             <a
-              href="https://wa.me/?text=I%20just%20secured%20my%20seat%20at%20the%20High-Income%20Career%20Accelerator%20by%20Mentel%20Ltd.%20Live%20virtual%20event%20July%2018-20%2C%202026.%20Only%20%E2%82%A612%2C000%20for%20early%20access%20%E2%80%94%20mentelltd.com"
+              href="https://wa.me/?text=I%20just%20secured%20my%20seat%20at%20the%20High-Income%20Career%20Accelerator%20by%20Mentel%20Ltd.%20Only%20%E2%82%A612%2C000%20for%20early%20access%20%E2%80%94%20mentelltd.com"
               target="_blank"
               class="btn-primary"
               style="
@@ -3213,7 +2678,7 @@
               >📲 Share on WhatsApp</a
             >
             <a
-              href="https://twitter.com/intent/tweet?text=Just%20secured%20my%20seat%20at%20%40MentelLtd%27s%20High-Income%20Career%20Accelerator.%20Live%20virtual%20event%20July%2018-20%20%F0%9F%94%A5%20Early%20access%20%E2%82%A612%2C000%20mentelltd.com"
+              href="https://twitter.com/intent/tweet?text=Just%20secured%20my%20seat%20at%20%40MentelLtd%27s%20High-Income%20Career%20Accelerator.%20Early%20access%20%E2%82%A612%2C000%20%F0%9F%94%A5%20mentelltd.com"
               target="_blank"
               class="btn-ghost"
               style="font-size: 12px; padding: 15px 28px"
@@ -3240,6 +2705,7 @@
           window.scrollTo({ top: 0, behavior: "smooth" });
         }
       }
+
       function toggleFaq(el) {
         const item = el.closest(".faq-item");
         const isOpen = item.classList.contains("open");
@@ -3248,6 +2714,7 @@
           .forEach((i) => i.classList.remove("open"));
         if (!isOpen) item.classList.add("open");
       }
+
       const endTime =
         new Date().getTime() +
         2 * 24 * 60 * 60 * 1000 +
@@ -3257,6 +2724,7 @@
       function pad(n) {
         return String(n).padStart(2, "0");
       }
+
       function updateTimers() {
         const diff = Math.max(0, endTime - new Date().getTime());
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
@@ -3281,6 +2749,7 @@
       }
       setInterval(updateTimers, 1000);
       updateTimers();
+
       function initPaystack() {
         const name = document.getElementById("f-name").value.trim();
         const email = document.getElementById("f-email").value.trim();
@@ -3292,7 +2761,7 @@
         const ty = document.getElementById("ty-name");
         if (ty) ty.textContent = `Welcome, ${name}`;
         const handler = PaystackPop.setup({
-          key: "pk_live_a79ee6fe415d50537d7c7c784fdb08763e6c75a9",
+          key: "pk_test_YOUR_PUBLIC_KEY_HERE", // 🔑 Replace with your Paystack public key
           email: email,
           amount: 1200000,
           currency: "NGN",

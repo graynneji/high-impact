@@ -1103,7 +1103,27 @@
         text-transform: uppercase;
         color: rgba(255, 200, 0, 0.7);
       }
+      /* GIF */
+      .gif-frame {
+        text-align: center;
+        margin: 40px 5px 0 5px;
+      }
 
+      .gif-frame-inner {
+        display: inline-block;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid rgba(240, 237, 228, 0.12);
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+        max-width: 720px;
+        width: 100%;
+      }
+
+      .gif-frame-inner img {
+        width: 100%;
+        display: block;
+      }
+      /* GIF END */
       .vs-table {
         margin-top: 40px;
         border: 1px solid var(--border);
@@ -1923,8 +1943,8 @@
             text-transform: uppercase;
             color: var(--gold);
           "
-          >⚡ Early Access — First 2,000 Seats Only · Price Increases After
-          Cohort Fills</span
+          >⚡ Early Access — Limited Seats · Price Increases After Cohort
+          Fills</span
         >
       </div>
 
@@ -1945,7 +1965,7 @@
           </p>
           <div class="hero-tags">
             <span class="tag gold">Early Access ₦12,000</span>
-            <span class="tag">First 2,000 Seats</span>
+            <span class="tag">Limited Seats</span>
             <span class="tag">Live · Virtual · 2026</span>
             <span class="tag">6-Week Framework</span>
           </div>
@@ -2571,7 +2591,7 @@
               <div class="testi-result">₦180k → $2,500/month</div>
             </div>
             <div class="testi-card">
-              <span class="stars">★★★★★</span>
+              <span class="stars">★★★★☆</span>
               <blockquote>
                 "I repositioned my CV and LinkedIn using the exact framework. 3
                 interviews in 2 weeks after months of silence. The difference
@@ -2581,7 +2601,7 @@
               <div class="testi-result">0 interviews → 3 in 2 weeks</div>
             </div>
             <div class="testi-card">
-              <span class="stars">★★★★★</span>
+              <span class="stars">★★★★☆</span>
               <blockquote>
                 "Went from applying blindly to applying strategically. My
                 response rate jumped immediately and I'm in active conversations
@@ -2591,7 +2611,7 @@
               <div class="testi-result">0 responses → active negotiations</div>
             </div>
             <div class="testi-card">
-              <span class="stars">★★★★★</span>
+              <span class="stars">★★★☆☆</span>
               <blockquote>
                 "The LinkedIn module alone changed everything. I went from zero
                 profile views to 3 recruiter messages in one week after applying
@@ -2623,6 +2643,15 @@
           </div>
         </div>
       </section>
+
+      <div class="gif-frame">
+        <div class="gif-frame-inner">
+          <img
+            src="Recording2026-03-08101305-ezgif.com-crop.gif"
+            alt="Transformation results"
+          />
+        </div>
+      </div>
 
       <!-- CTA -->
       <div
@@ -2660,7 +2689,7 @@
               color: rgba(240, 237, 228, 0.42);
             "
           >
-            Early access · First 2,000 seats only · Live sessions Jul 18–20
+            Early access · Limited seats · Live sessions Jul 18–20
           </div>
         </div>
       </div>
@@ -3128,7 +3157,7 @@
           <div class="seats-bar">
             <div class="seats-bar-label">
               <span>Seats Claimed</span
-              ><span style="color: var(--gold)">1,482 / 2,000</span>
+              ><span style="color: var(--gold)">Limited Seats Available</span>
             </div>
             <div class="seats-bar-track">
               <div class="seats-bar-fill"></div>
@@ -3142,7 +3171,7 @@
             ⚡ &nbsp;Claim My Seat — ₦12,000
           </button>
           <div style="font-size: 12px; color: rgba(240, 237, 228, 0.42)">
-            Only 518 seats remaining at this price
+            Only few seats remaining at this price
           </div>
         </div>
         <div class="wrap" style="margin-top: 80px">
@@ -3157,7 +3186,7 @@
             </div>
             <div class="urgency-card">
               <div class="uc-num">02</div>
-              <h4>Limited to <em>2,000 Seats</em></h4>
+              <h4>Limited <em>Seats Available</em></h4>
               <p>
                 To protect the mentorship quality and community experience, this
                 cohort is strictly capped. No exceptions.
@@ -3213,7 +3242,7 @@
             color: var(--gold);
           "
           >⏳ Early Access Closes In: &nbsp;<span id="mini-timer">--:--:--</span
-          >&nbsp;· &nbsp;518 Seats Remaining &nbsp;·&nbsp; 📅 Live Jul 18–20 · 4
+          >&nbsp;· &nbsp;Few Seats Remaining &nbsp;·&nbsp; 📅 Live Jul 17–19 · 4
           PM WAT</span
         >
       </div>
@@ -3618,11 +3647,12 @@
         if (!isOpen) item.classList.add("open");
       }
       const endTime =
-        new Date().getTime() +
-        2 * 24 * 60 * 60 * 1000 +
-        17 * 60 * 60 * 1000 +
-        44 * 60 * 1000 +
-        8 * 1000;
+        // new Date().getTime() +
+        // 2 * 24 * 60 * 60 * 1000 +
+        // 17 * 60 * 60 * 1000 +
+        // 44 * 60 * 1000 +
+        // 8 * 1000;
+        new Date().getTime() + 3 * 60 * 1000;
       function pad(n) {
         return String(n).padStart(2, "0");
       }
